@@ -6,7 +6,7 @@ const naturalLanguageUnderstanding = new NaturalLanguageUnderstandingV1({
   authenticator: new IamAuthenticator({
     apikey: process.env.NEXT_PUBLIC_TEXT_ANALYSIS_KEY
   }),
-  serviceUrl: process.env.NEXT_PUBLIC_TEXT_ANALYSIS_URL,
+  serviceUrl: process.env.NEXT_PUBLIC_TEXT_ANALYSIS_URL
 });
 
 const fetchEmotion = (input) => {
