@@ -12,12 +12,22 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 
 export default function Home() {
 
+
   const mountRef = useRef(null);
 
   useEffect(() => {
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(70, window.innerHeight / window.innerHeight, 0.1, 1000);
     const renderer = new THREE.WebGLRenderer({ antialias: true });
+
+
+    // Handle window resizing
+    window.addEventListener('resize', onWindowResize, false);
+    function onWindowResize() {
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      camera.aspect = window.innerWidth / window.innerHeight;
+      // camera.updateProjectionMatrix();
+    }
 
     // These do something important I think
     renderer.outputEncoding = THREE.sRGBEncoding;
@@ -63,7 +73,7 @@ export default function Home() {
     // scene.environment = env;
 
     // Orient 3D Space
-    scene.add(new THREE.AxesHelper(500))
+    // scene.add(new THREE.AxesHelper(500))
 
     // Assign Ref property for later cleanup
     const cleanup = mountRef.current;
@@ -92,7 +102,7 @@ export default function Home() {
 
     // LOAD OBJECT
     const loader = new GLTFLoader();
-    loader.load('models/del.glb', (gltf) => {
+    loader.load('models/GoldenMicNoCable.glb', (gltf) => {
       let model = gltf.scene;
 
       // On load, animate camera position
@@ -139,7 +149,7 @@ export default function Home() {
     <div className="view-one">
       <div ref={mountRef}>
         <h1 className="title">
-              Script.ly
+          Script.ly
         </h1>
         <button className="button">Explore</button>
       </div>
