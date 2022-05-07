@@ -4,59 +4,41 @@ import React, {useState} from 'react';
 
 import {BarChart,Bar,XAxis,YAxis,CartesianGrid,Tooltip,Legend} from "recharts";
 
-const data = [
-  {
-    name: "sadness",
 
-    emotions: 4.1851,
-    amt: 100
-  },
-  {
-    name: "joy",
+const Analyze = ({emotion}) => {
 
-    emotions: 71.761,
-    amt: 100
-  },
-  {
-    name: "fear",
+  const data = [
+    {
+      name: "sadness",
+      emotions: emotion.sadness * 100,
+      amt: 100
+    },
+    {
+      name: "joy",
+      emotions: emotion.joy * 100,
+      amt: 100
+    },
+    {
+      name: "fear",
+      emotions: emotion.fear * 100,
+      amt: 100
+    },
+    {
+      name: "disgust",
+      emotions: emotion.disgust * 100,
+      amt: 100
+    },
+    {
+      name: "anger",
+      emotions: emotion.anger * 100,
+      amt: 100
+    },
+  ];
 
-    emotions: 3.713,
-    amt: 100
-  },
-  {
-    name: "disgust",
-
-    emotions: 10.0171,
-    amt: 100
-  },
-  {
-    name: "anger",
-
-    emotions: 4.2882,
-    amt: 100
-  },
-];
-
-let emotion = {
-  sadness: 0.041851,
-  joy: 0.71761,
-  fear: 0.03713,
-  disgust: 0.100171,
-  anger: 0.042882
-}
-
-const Analyze = (emotion) => {
-
-
-
-  // useEffect(() => {
-  //   console.log(emotion)
-  // }, [])
-
+  console.log(data)
 
   return (
     <div>
-      Full Documents Graph
       <BarChart
       width={500}
       height={300}
@@ -80,4 +62,4 @@ const Analyze = (emotion) => {
   )
 }
 
-export default Analyze
+export default Analyze;
