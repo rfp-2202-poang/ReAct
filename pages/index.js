@@ -19,14 +19,34 @@ export default function Home() {
     // Get window sizes
     renderer.setSize(window.innerWidth, window.innerHeight);
     // renderer.setClearColor(0x7ec0ee, 1);
-
+    scene.background = new THREE.Color(0xdddddd)
     // LIGHTING
-    const light = new THREE.DirectionalLight(0xffffff, 5);
-    const spotLight = new THREE.SpotLight(0xffffff, 3);
-    light.position.set(1, 1, 10)
+
+    let hemiLight = new THREE.HemisphereLight(0xffeeb1, 0x080820, 0);
+    scene.add(hemiLight);
+
+    let directionalLightFront = new THREE.DirectionalLight(new THREE.Color('hsl(0, 0%, 100%)'),2);
+    directionalLightFront.position.set(0, 2, 5);
+    scene.add(directionalLightFront)
+
+    let directionalLightLeft = new THREE.DirectionalLight(new THREE.Color('hsl(0, 0%, 100%)'));
+    directionalLightLeft.position.set(10, 5, -10);
+    scene.add(directionalLightLeft)
+
+    let directionalLightRight = new THREE.DirectionalLight(new THREE.Color('hsl(0, 0%, 100%)'));
+    directionalLightRight.position.set(-10, 5, -10);
+    scene.add(directionalLightRight)
+
+    let pointLight = new THREE.PointLight(0xffffff, 100)
+    pointLight.position.set(0.5,1,2)
+
+    const spotLight = new THREE.SpotLight(0xffffff, 3, 50);
     spotLight.position.set(0, 4, 0)
     scene.add(spotLight);
-    scene.add(light);
+    const spotHelper = new THREE.SpotLightHelper(spotLight)
+    scene.add(spotHelper);
+
+    //---------------
 
     // ENVIRONMENT
     const env = new RGBELoader().load('models/studio_small_08_1k.hdr');
@@ -36,11 +56,16 @@ export default function Home() {
     // Assign Ref property for later cleanup
     const cleanup = mountRef.current;
 
+    scene.add(new THREE.AxesHelper(500))
 
     // FLOOR TEXTURE
     let texture = new THREE.TextureLoader().load('models/floor_tiles_08_diff_1k.jpg');
     texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
     texture.repeat.set(12, 12);
+    texture.encoding = THREE.sRGBEncoding;
+    texture.flipY = false;
+
+
 
     // FLOOR MESH
     let material = new THREE.MeshPhysicalMaterial({ map: texture, bumpMap: texture });
@@ -50,6 +75,9 @@ export default function Home() {
     ground.rotation.x = Math.PI / 180 * -90;
     ground.position.y = -1.3;
     scene.add(ground);
+
+    renderer.outputEncoding = THREE.sRGBEncoding;
+    renderer.gammaOutput = true;
 
     // LOAD OBJECT
     const loader = new GLTFLoader();
@@ -61,10 +89,10 @@ export default function Home() {
 
     // CAMERA CONTROLS
     const controls = new OrbitControls(camera, renderer.domElement);
-    controls.enableZoom = false
-    controls.enablePan = false
-    controls.enableRotate = false
-    camera.position.z = 4;
+    // controls.enableZoom = false
+    // controls.enablePan = false
+    // controls.enableRotate = false
+    camera.position.z = 10;
     controls.minPolarAngle = Math.PI / 2;
     controls.maxPolarAngle = Math.PI / 2;
     controls.autoRotate = true;
@@ -73,7 +101,7 @@ export default function Home() {
     mountRef.current.appendChild(renderer.domElement);
 
     const animate = () => {
-      controls.update();
+      // controls.update();
       requestAnimationFrame(animate);
       renderer.render(scene, camera);
     }
