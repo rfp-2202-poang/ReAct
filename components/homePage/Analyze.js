@@ -16,10 +16,3 @@ export default function Analyze() {
 
   return <div>Analyze page</div>;
 }
-
-// .then((analysisResults) => {
-//   console.log(JSON.stringify(analysisResults, null, 2));
-// })
-// .catch((err) => {
-//   console.log("error:", err);
-// });
