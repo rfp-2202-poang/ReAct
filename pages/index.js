@@ -6,6 +6,7 @@ import { MTLLoader } from 'three/examples/jsm/loaders/MTLLoader.js';
 import { RGBELoader } from 'three/examples/jsm/loaders/RGBELoader'
 import gsap from 'gsap';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
+// import styles from '../styles/Home.module.css';
 
 
 
@@ -20,21 +21,21 @@ export default function Home() {
 
     // These do something important I think
     renderer.outputEncoding = THREE.sRGBEncoding;
-    renderer.gammaOutput = true;
-    renderer.setPixelRatio( window.devicePixelRatio );
 
+    renderer.setPixelRatio(window.devicePixelRatio);
 
     // Get window sizes
     renderer.setSize(window.innerWidth, window.innerHeight);
     // renderer.setClearColor(0x7ec0ee, 1);
 
-    // LIGHTING
+
+    //-------------- LIGHTING--------------
     // scene.background = new THREE.Color(0xdddddd)
 
     let hemiLight = new THREE.HemisphereLight(0xffeeb1, 0x080820, 0);
     scene.add(hemiLight);
 
-    let directionalLightFront = new THREE.DirectionalLight(new THREE.Color('hsl(0, 0%, 100%)'),2);
+    let directionalLightFront = new THREE.DirectionalLight(new THREE.Color('hsl(0, 0%, 100%)'), 2);
     directionalLightFront.position.set(0, 2, 5);
     scene.add(directionalLightFront)
 
@@ -47,18 +48,14 @@ export default function Home() {
     scene.add(directionalLightRight)
 
     let pointLight = new THREE.PointLight(0xffffff, 100)
-    pointLight.position.set(0.5,1,2)
+    pointLight.position.set(0.5, 1, 2)
 
     const spotLight = new THREE.SpotLight(0xffffff, 3, 50, 26);
     spotLight.position.set(0, 4, 0)
     scene.add(spotLight);
     // const spotHelper = new THREE.SpotLightHelper(spotLight)
     // scene.add(spotHelper);
-
-
-
-
-//--------------------
+    //-------------------------------------------
 
 
     // ENVIRONMENT
@@ -73,13 +70,12 @@ export default function Home() {
 
 
     // FLOOR TEXTURE
+    // -------Floor is currently disabled-------
     let texture = new THREE.TextureLoader().load('models/floor_tiles_08_diff_1k.jpg');
     texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
     texture.repeat.set(12, 12);
     texture.encoding = THREE.sRGBEncoding;
     texture.flipY = false;
-
-
 
     // FLOOR MESH
     let material = new THREE.MeshPhysicalMaterial({ map: texture, bumpMap: texture });
@@ -90,6 +86,8 @@ export default function Home() {
     ground.position.y = -1.3;
     // scene.add(ground);
 
+    // -------------------------------------------------
+    // Start camera farther away
     camera.position.z = 8;
 
     // LOAD OBJECT
@@ -97,18 +95,19 @@ export default function Home() {
     loader.load('models/del.glb', (gltf) => {
       let model = gltf.scene;
 
+      // On load, animate camera position
       gsap.to(camera.position, {
         z: 3,
-        duration:1.5,
+        duration: 1.5,
         ease: 'power1.out',
       })
-
       scene.add(model);
     })
 
 
-    // CAMERA CONTROLS
+    //-------------- CAMERA CONTROLS---------------------
     const controls = new OrbitControls(camera, renderer.domElement);
+    // Lock all controls
     controls.enableZoom = false
     controls.enablePan = false
     controls.enableRotate = false
@@ -136,13 +135,13 @@ export default function Home() {
   }, []);
 
   return (
-    <div ref={mountRef}>
-      <div>
+    <div className="view-one">
+      <div ref={mountRef}>
         <h1 className="title">
-          Script.ly
+              Script.ly
         </h1>
+        <button className="button">Explore</button>
       </div>
-
     </div>
   )
 }
