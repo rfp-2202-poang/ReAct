@@ -27,10 +27,10 @@ return (
       {/* <ConvertToSpeech></ConvertToSpeech> */}
       {/* <ConvertToText></ConvertToText> */}
       <RecordButton />
+      <Practice></Practice>
       <h3>Full Document Emotion Analysis</h3>
       <Analyze emotion={emotion}></Analyze>
       {charts}
-      <Practice></Practice>
     </div>
   );
 }
