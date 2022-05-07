@@ -4,9 +4,9 @@ const { IamAuthenticator } = require("ibm-watson/auth");
 const naturalLanguageUnderstanding = new NaturalLanguageUnderstandingV1({
   version: "2022-04-07",
   authenticator: new IamAuthenticator({
-    apikey: 'f2Zlyud3Q2N8c0X_A7HYVyIJtGVG_kLWTsMUtPY10uEC'
+    apikey: process.env.NEXT_PUBLIC_TEXT_ANALYSIS_KEY
   }),
-  serviceUrl: 'https://api.us-south.natural-language-understanding.watson.cloud.ibm.com/instances/cbe73292-e35a-4129-be5c-825889aadb33'
+  serviceUrl: process.env.NEXT_PUBLIC_TEXT_ANALYSIS_URL
 });
 
 const fetchEmotion = (input) => {
