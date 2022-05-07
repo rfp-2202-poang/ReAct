@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import * as THREE from "three";
 import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader.js';
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { MTLLoader } from 'three/examples/jsm/loaders/MTLLoader.js';
+import { RGBELoader } from 'three/examples/jsm/loaders/RGBELoader'
 
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 
@@ -18,11 +19,16 @@ export default function Home() {
     // Get window sizes
     renderer.setSize(window.innerWidth, window.innerHeight);
     // renderer.setClearColor(0x7ec0ee, 1);
-    const light = new THREE.AmbientLight(0xffffff, 1);
-    const spotLight = new THREE.SpotLight(0xffffff, 4);
-    spotLight.position.set(0, 1, 0)
-    scene.add(light);
+    const light = new THREE.DirectionalLight(0xffffff, 5);
+    const spotLight = new THREE.SpotLight(0xffffff, 3);
+
+    light.position.set(1, 1, 10)
+    spotLight.position.set(0, 4, 0)
     scene.add(spotLight);
+    scene.add(light);
+
+    const env = new RGBELoader().load('models/studio_small_08_1k.hdr');
+    scene.environment = env;
 
     // Target correct div
     mountRef.current.appendChild(renderer.domElement);
@@ -41,19 +47,22 @@ export default function Home() {
     let ground = new THREE.Mesh(geometry, material);
     ground.rotation.z = Math.PI / 180 * -45;
     ground.rotation.x = Math.PI / 180 * -90;
-    ground.position.y = -2.0;
+    ground.position.y = -1.3;
     scene.add(ground);
 
 
     const loader = new GLTFLoader();
-    loader.load('models/rca_44-bx_microphone/scene.gltf', (gltf) => {
+    loader.load('models/del.glb', (gltf) => {
       let model = gltf.scene;
       scene.add(model);
     })
 
     camera.position.z = 4;
-
+    controls.minPolarAngle = Math.PI / 2;
+    controls.maxPolarAngle = Math.PI / 2;
+    controls.autoRotate = true;
     const animate = () => {
+      controls.update();
       requestAnimationFrame(animate);
       renderer.render(scene, camera);
     }
