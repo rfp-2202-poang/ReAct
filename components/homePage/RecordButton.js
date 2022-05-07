@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
+import PreviewText from "./PreviewText.js";
 
 export default function RecordButton() {
   const recognition = useRef(null);
   const [record, setRecord] = useState(false);
   const [transcript, setTranscript] = useState('');
+  const [preview, setPreview] = useState(false);
 
   useEffect(() => {
     const SpeechRecognition = window.SpeechRecognition || webkitSpeechRecognition;
@@ -20,12 +22,12 @@ export default function RecordButton() {
       recognition.current.start();
       recognition.current.onstart = () => {
         console.log('starting recording');
-      }
+      };
     } else {
       recognition.current.stop();
       recognition.current.onend = () => {
         console.log('stopped');
-      }
+      };
     // recognition.current.onend = () => {
     //   console.log('test');
     //   recognition.current.start();
@@ -45,9 +47,15 @@ export default function RecordButton() {
     setRecord(!record);
   };
 
+  const togglePreview = () => {
+    setPreview(!preview);
+  };
+
   return (
     <>
-      {record ? <button onClick={toggleRecord}>Stop</button> : <button onClick={toggleRecord}>Start</button>}
+      {record ? <button onClick={toggleRecord}>Stop Recording</button> : <button onClick={toggleRecord}>Start Record</button>}
+      {transcript ? <button onClick={togglePreview}>Preview</button> : null}
+      {preview ? <PreviewText text={transcript} /> : null}
     </>
   )
 }
