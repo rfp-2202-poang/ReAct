@@ -88,13 +88,21 @@ export default function Home() {
     ground.rotation.z = Math.PI / 180 * -45;
     ground.rotation.x = Math.PI / 180 * -90;
     ground.position.y = -1.3;
-    scene.add(ground);
+    // scene.add(ground);
 
+    camera.position.z = 8;
 
     // LOAD OBJECT
     const loader = new GLTFLoader();
     loader.load('models/del.glb', (gltf) => {
       let model = gltf.scene;
+
+      gsap.to(camera.position, {
+        z: 3,
+        duration:1.5,
+        ease: 'power1.out',
+      })
+
       scene.add(model);
     })
 
@@ -104,7 +112,8 @@ export default function Home() {
     controls.enableZoom = false
     controls.enablePan = false
     controls.enableRotate = false
-    camera.position.z = 3;
+    // Set camera position, looking down -z axis
+    // camera.position.z = 3;
     controls.minPolarAngle = Math.PI / 2;
     controls.maxPolarAngle = Math.PI / 2;
     controls.autoRotate = true;
