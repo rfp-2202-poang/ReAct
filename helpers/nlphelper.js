@@ -2,16 +2,16 @@ const NaturalLanguageUnderstandingV1 = require("ibm-watson/natural-language-unde
 const { IamAuthenticator } = require("ibm-watson/auth");
 require('dotenv-flow').config();
 
-console.log('process.env.NEXT_PUBLIC_TEXT_ANALYSIS_KEY:::', process.env.NEXT_PUBLIC_TEXT_ANALYSIS_KEY);
+// console.log('process.env.NEXT_PUBLIC_TEXT_ANALYSIS_KEY:::', process.env.NEXT_PUBLIC_TEXT_ANALYSIS_KEY);
 
-console.log('process.env.NEXT_PUBLIC_TEXT_ANALYSIS_URL:::', process.env.NEXT_PUBLIC_TEXT_ANALYSIS_URL);
+// console.log('process.env.NEXT_PUBLIC_TEXT_ANALYSIS_URL:::', process.env.NEXT_PUBLIC_TEXT_ANALYSIS_URL);
 
 const naturalLanguageUnderstanding = new NaturalLanguageUnderstandingV1({
   version: "2022-04-07",
   authenticator: new IamAuthenticator({
-    apikey: process.env.NEXT_PUBLIC_TEXT_ANALYSIS_KEY
+    apikey: 'f2Zlyud3Q2N8c0X_A7HYVyIJtGVG_kLWTsMUtPY10uEC'
   }),
-  serviceUrl: process.env.NEXT_PUBLIC_TEXT_ANALYSIS_URL,
+  serviceUrl: 'https://api.us-south.natural-language-understanding.watson.cloud.ibm.com/instances/cbe73292-e35a-4129-be5c-825889aadb33'
 });
 
 const fetchEmotion = (input) => {
