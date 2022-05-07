@@ -15,12 +15,14 @@ export default function Home() {
 
   useEffect(() => {
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(25, window.innerHeight / window.innerHeight, 0.1, 1000);
+    const camera = new THREE.PerspectiveCamera(70, window.innerHeight / window.innerHeight, 0.1, 1000);
     const renderer = new THREE.WebGLRenderer({ antialias: true });
 
     // These do something important I think
     renderer.outputEncoding = THREE.sRGBEncoding;
     renderer.gammaOutput = true;
+    renderer.setPixelRatio( window.devicePixelRatio );
+
 
     // Get window sizes
     renderer.setSize(window.innerWidth, window.innerHeight);
@@ -102,7 +104,7 @@ export default function Home() {
     controls.enableZoom = false
     controls.enablePan = false
     controls.enableRotate = false
-    camera.position.z = 10;
+    camera.position.z = 3;
     controls.minPolarAngle = Math.PI / 2;
     controls.maxPolarAngle = Math.PI / 2;
     controls.autoRotate = true;
