@@ -4,7 +4,7 @@ import RecordButton from "../components/homePage/RecordButton.js";
 import Analyze from "../components/homePage/Analyze.js";
 import ConvertToSpeech from "../components/homePage/ConvertToSpeech.js";
 import ConvertToText from "../components/homePage/ConvertToText.js";
-import {emotion, results} from '../components/homePage/emotiondata.js'
+import {emotion, results} from '../components/homePage/emotiondata.js';
 
 export default function homePage() {
 
