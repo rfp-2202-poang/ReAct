@@ -59,8 +59,8 @@ export default function Home() {
 
 
     // ENVIRONMENT
-    const env = new RGBELoader().load('models/studio_small_08_1k.hdr');
-    scene.environment = env;
+    // const env = new RGBELoader().load('models/studio_small_08_1k.hdr');
+    // scene.environment = env;
 
     // Orient 3D Space
     // scene.add(new THREE.AxesHelper(500))
@@ -71,20 +71,20 @@ export default function Home() {
 
     // FLOOR TEXTURE
     // -------Floor is currently disabled-------
-    let texture = new THREE.TextureLoader().load('models/floor_tiles_08_diff_1k.jpg');
-    texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
-    texture.repeat.set(12, 12);
-    texture.encoding = THREE.sRGBEncoding;
-    texture.flipY = false;
+    // let texture = new THREE.TextureLoader().load('models/floor_tiles_08_diff_1k.jpg');
+    // texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
+    // texture.repeat.set(12, 12);
+    // texture.encoding = THREE.sRGBEncoding;
+    // texture.flipY = false;
 
-    // FLOOR MESH
-    let material = new THREE.MeshPhysicalMaterial({ map: texture, bumpMap: texture });
-    let geometry = new THREE.PlaneBufferGeometry(100, 100);
-    let ground = new THREE.Mesh(geometry, material);
-    ground.rotation.z = Math.PI / 180 * -45;
-    ground.rotation.x = Math.PI / 180 * -90;
-    ground.position.y = -1.3;
-    // scene.add(ground);
+    // // FLOOR MESH
+    // let material = new THREE.MeshPhysicalMaterial({ map: texture, bumpMap: texture });
+    // let geometry = new THREE.PlaneBufferGeometry(100, 100);
+    // let ground = new THREE.Mesh(geometry, material);
+    // ground.rotation.z = Math.PI / 180 * -45;
+    // ground.rotation.x = Math.PI / 180 * -90;
+    // ground.position.y = -1.3;
+    // // scene.add(ground);
 
     // -------------------------------------------------
     // Start camera farther away
