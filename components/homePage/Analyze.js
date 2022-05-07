@@ -13,12 +13,3 @@ export default function Analyze() {
     </div>
   )
 }
-
-
-
-// .then((analysisResults) => {
-//   console.log(JSON.stringify(analysisResults, null, 2));
-// })
-// .catch((err) => {
-//   console.log("error:", err);
-// });
