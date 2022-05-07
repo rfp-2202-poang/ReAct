@@ -1,12 +1,31 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../../styles/Home.module.css'
+import React, { useState } from 'react';
+import { useForm } from 'react-hook-form';
 
-export default function UploadButton() {
+const UploadButton = () => {
 
-  // upload logic
+  const { register, handleSubmit } = useForm();
+  const [analyze, setAnalyze] = useState('');
+
+  const onSubmit = (data) => {
+
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      console.log('e.target.result:::', e.target.result);
+      setAnalyze(e.target.result)
+    };
+
+    reader.readAsText(data.firstName[0]);
+  }
+
   return (
-    <button>Upload Component</button>
-
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <input {...register("firstName", { required: true })} type='file' />
+      <button>Analyze Script</button>
+    </form>
   )
 }
+
+export default UploadButton;
