@@ -8,19 +8,26 @@ import gsap from 'gsap';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 
 
+
 export default function Home() {
 
   const mountRef = useRef(null);
 
   useEffect(() => {
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, window.innerHeight / window.innerHeight, 0.1, 1000);
+    const camera = new THREE.PerspectiveCamera(25, window.innerHeight / window.innerHeight, 0.1, 1000);
     const renderer = new THREE.WebGLRenderer({ antialias: true });
+
+    // These do something important I think
+    renderer.outputEncoding = THREE.sRGBEncoding;
+    renderer.gammaOutput = true;
+
     // Get window sizes
     renderer.setSize(window.innerWidth, window.innerHeight);
     // renderer.setClearColor(0x7ec0ee, 1);
-    scene.background = new THREE.Color(0xdddddd)
+
     // LIGHTING
+    // scene.background = new THREE.Color(0xdddddd)
 
     let hemiLight = new THREE.HemisphereLight(0xffeeb1, 0x080820, 0);
     scene.add(hemiLight);
@@ -40,23 +47,28 @@ export default function Home() {
     let pointLight = new THREE.PointLight(0xffffff, 100)
     pointLight.position.set(0.5,1,2)
 
-    const spotLight = new THREE.SpotLight(0xffffff, 3, 50);
+    const spotLight = new THREE.SpotLight(0xffffff, 3, 50, 26);
     spotLight.position.set(0, 4, 0)
     scene.add(spotLight);
-    const spotHelper = new THREE.SpotLightHelper(spotLight)
-    scene.add(spotHelper);
+    // const spotHelper = new THREE.SpotLightHelper(spotLight)
+    // scene.add(spotHelper);
 
-    //---------------
+
+
+
+//--------------------
+
 
     // ENVIRONMENT
     const env = new RGBELoader().load('models/studio_small_08_1k.hdr');
     scene.environment = env;
 
+    // Orient 3D Space
+    // scene.add(new THREE.AxesHelper(500))
 
     // Assign Ref property for later cleanup
     const cleanup = mountRef.current;
 
-    scene.add(new THREE.AxesHelper(500))
 
     // FLOOR TEXTURE
     let texture = new THREE.TextureLoader().load('models/floor_tiles_08_diff_1k.jpg');
@@ -76,8 +88,6 @@ export default function Home() {
     ground.position.y = -1.3;
     scene.add(ground);
 
-    renderer.outputEncoding = THREE.sRGBEncoding;
-    renderer.gammaOutput = true;
 
     // LOAD OBJECT
     const loader = new GLTFLoader();
@@ -89,9 +99,9 @@ export default function Home() {
 
     // CAMERA CONTROLS
     const controls = new OrbitControls(camera, renderer.domElement);
-    // controls.enableZoom = false
-    // controls.enablePan = false
-    // controls.enableRotate = false
+    controls.enableZoom = false
+    controls.enablePan = false
+    controls.enableRotate = false
     camera.position.z = 10;
     controls.minPolarAngle = Math.PI / 2;
     controls.maxPolarAngle = Math.PI / 2;
@@ -101,8 +111,10 @@ export default function Home() {
     mountRef.current.appendChild(renderer.domElement);
 
     const animate = () => {
-      // controls.update();
+      controls.update();
+
       requestAnimationFrame(animate);
+
       renderer.render(scene, camera);
     }
     animate();
