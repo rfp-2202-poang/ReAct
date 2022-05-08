@@ -29,8 +29,8 @@ return (
       <RecordButton />
       <Practice></Practice>
       <h3>Full Document Emotion Analysis</h3>
-      <Analyze emotion={emotion}></Analyze>
-      {charts}
+      {/* <Analyze emotion={emotion}></Analyze>
+      {charts} */}
     </div>
   );
 }

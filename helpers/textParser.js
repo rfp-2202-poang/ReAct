@@ -4,7 +4,7 @@
  const scriptParser = (textStr, character) => {
   const script = textStr.split('\n');
   character = character.toUpperCase();
-  keywords = [
+  const keywords = [
     'CONTINUED',
     'MORE',
     'INT',
