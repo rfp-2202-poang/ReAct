@@ -1,7 +1,7 @@
 /*  var fs = require('fs');
  const text = fs.readFileSync('helpers/script.txt', 'utf-8'); */
 
-const scriptParser = (textStr, character) => {
+ const scriptParser = (textStr, character) => {
   const script = textStr.split('\n');
   character = character.toUpperCase();
   keywords = [
