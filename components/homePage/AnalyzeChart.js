@@ -10,27 +10,27 @@ const AnalyzeChart = ({emotion}) => {
   const data = [
     {
       name: "sadness",
-      emotions: emotion.sadness * 100,
+      emotions: (emotion.sadness * 100).toFixed(2),
       amt: 100
     },
     {
       name: "joy",
-      emotions: emotion.joy * 100,
+      emotions: (emotion.joy * 100).toFixed(2),
       amt: 100
     },
     {
       name: "fear",
-      emotions: emotion.fear * 100,
+      emotions: (emotion.fear * 100).toFixed(2),
       amt: 100
     },
     {
       name: "disgust",
-      emotions: emotion.disgust * 100,
+      emotions: (emotion.disgust * 100).toFixed(2),
       amt: 100
     },
     {
       name: "anger",
-      emotions: emotion.anger * 100,
+      emotions: (emotion.anger * 100).toFixed(2),
       amt: 100
     },
   ];
