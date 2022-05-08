@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-// import textParser from '../../helpers/textParser.js';
+import textParser from '../../helpers/textParser.js';
 import { useForm } from 'react-hook-form';
 
 const Practice = () => {

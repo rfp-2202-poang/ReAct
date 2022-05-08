@@ -3,7 +3,7 @@ const text = fs.readFileSync('helpers/script.txt', 'utf-8');
 const scriptParser = (textStr=text, character='RACHEL') => {
   const script = textStr.split('\n');
   character = character.toUpperCase();
-  keywords = [
+  const keywords = [
     'CONTINUED',
     'MORE',
     'INT',
