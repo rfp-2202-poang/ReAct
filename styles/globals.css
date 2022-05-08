@@ -68,6 +68,10 @@ a {
   flex-direction: column;
 }
 
+.about {
+  color:white;
+}
+
 
 canvas {
   position: fixed;
@@ -90,6 +94,7 @@ canvas {
   border-radius: 20px;
   margin-bottom: 3%;
 }
+
 
 .explore-button:hover {
   border: 3px solid rgb(126, 93, 0);

@@ -146,6 +146,7 @@ export default function Home() {
   }, []);
 
   return (
+    <>
     <div className="view-one">
       <div ref={mountRef}>
         <h1 className="title">
@@ -155,6 +156,7 @@ export default function Home() {
         {/* <button className="test-button">Test</button> */}
       </div>
     </div>
+    </>
   )
 }
 
