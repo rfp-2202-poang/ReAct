@@ -119,6 +119,10 @@ a {
   color:white;
 }
 
+#videoBG {
+  z-index: -2;
+  position: fixed;
+}
 
 canvas {
   position: fixed;

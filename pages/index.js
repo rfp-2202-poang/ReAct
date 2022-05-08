@@ -19,7 +19,8 @@ export default function Home() {
   useEffect(() => {
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(70, window.innerHeight / window.innerHeight, 0.1, 1000);
-    const renderer = new THREE.WebGLRenderer({ antialias: true });
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer.setClearColor( 0x000000, 0 ); // the default
 
 
     // Handle window resizing
@@ -158,6 +159,7 @@ export default function Home() {
         </Link>
         {/* <button className="test-button">Test</button> */}
       </div>
+        <video id="videoBG" loop src="models/gold_dust_particles.mp4" autoPlay muted></video>
     </div>
     </>
   )
