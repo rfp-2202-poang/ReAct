@@ -6,6 +6,7 @@ import { MTLLoader } from 'three/examples/jsm/loaders/MTLLoader.js';
 import { RGBELoader } from 'three/examples/jsm/loaders/RGBELoader'
 import gsap from 'gsap';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
+import Link from 'next/link';
 // import styles from '../styles/Home.module.css';
 
 
@@ -152,7 +153,9 @@ export default function Home() {
         <h1 className="title">
           Script.ly
         </h1>
-        <button className="explore-button">Explore</button>
+        <Link href="/home-page">
+        <button className="explore-button">RECORD or UPLOAD</button>
+        </Link>
         {/* <button className="test-button">Test</button> */}
       </div>
     </div>
