@@ -5,7 +5,7 @@ import React, {useState} from 'react';
 import {BarChart,Bar,XAxis,YAxis,CartesianGrid,Tooltip,Legend} from "recharts";
 
 
-const Analyze = ({emotion}) => {
+const AnalyzeChart = ({emotion}) => {
 
   const data = [
     {
@@ -50,7 +50,7 @@ const Analyze = ({emotion}) => {
         bottom: 5
       }}
     >
-      <CartesianGrid strokeDasharray="3 3" />
+      {/* <CartesianGrid /> */}
       <XAxis dataKey="name" />
       <YAxis />
       <Tooltip />
@@ -62,4 +62,4 @@ const Analyze = ({emotion}) => {
   )
 }
 
-export default Analyze;
+export default AnalyzeChart;
