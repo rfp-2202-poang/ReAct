@@ -31,23 +31,43 @@ a {
   z-index: 10;
   width: 100%;
   text-align: center;
-  transform: translate(0, 50%);
   font-family:'Alfa Slap One';
   font-weight: 600;
   letter-spacing: 45px;
   text-transform: uppercase;
   font-size: 52px;
 
-  background: -webkit-linear-gradient(rgb(255, 238, 53), rgb(245, 180, 1), rgba(0, 0, 0, 0.989));
+  background: -webkit-linear-gradient(rgb(255, 238, 53) 0%, rgb(245, 180, 1) 29%, rgba(0, 0, 0, 0.989));
   background-clip: text;
   -webkit-text-fill-color: transparent;
+
+  animation: 4.5s anim-lineUp ease-out, once;
+
 }
-/*
+
+@keyframes anim-lineUp {
+  0% {
+    opacity: 0;
+    transform: translateY(80%);
+  }
+  20% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+
 .view-one {
   display: flex;
   flex-direction: column;
+}
 
-} */
 
 canvas {
   position: fixed;
@@ -57,14 +77,38 @@ canvas {
   z-index: -1;
 }
 
-.button {
+.explore-button {
   position: absolute;
   top: 85%;
   left: 35%;
-  border: 8px solid #B0903D;
+  border: 2px solid rgb(126, 93, 0);
   height: 10%;
   width: 30%;
-  background-color: rgba(62, 68, 73, 0.5);
+  background-color: rgba(62, 68, 73, 0.357);
+  color: #B0903D;
+  font-size: 30px;
+  border-radius: 20px;
+  margin-bottom: 3%;
+}
+
+.explore-button:hover {
+  border: 3px solid rgb(126, 93, 0);
+  font-size: 32px;
+  background-color: rgba(170, 174, 176, 0.168);
+  color:#B0903D;
+  cursor: pointer;
+}
+
+
+
+.test-button {
+  position: absolute;
+  top:125%;
+  left: 35%;
+  border: 8px solid rgb(126, 93, 0);
+  height: 10%;
+  width: 30%;
+  background-color: rgba(62, 68, 73, 0.357);
   color: #B0903D;
   font-size: 30px;
   border-radius: 20px;

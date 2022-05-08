@@ -151,7 +151,8 @@ export default function Home() {
         <h1 className="title">
           Script.ly
         </h1>
-        <button className="button">Explore</button>
+        <button className="explore-button">Explore</button>
+        {/* <button className="test-button">Test</button> */}
       </div>
     </div>
   )
