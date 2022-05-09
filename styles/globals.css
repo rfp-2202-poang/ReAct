@@ -42,20 +42,19 @@ a {
   -webkit-text-fill-color: transparent;
 
   animation: 4.5s titleFadeIn ease-out, once;
-
 }
 
 .explore-button {
-  font-family: 'Alfa Slap One';
+  font-family: 'serif';
   position: absolute;
   top: 85%;
-  left: 35%;
+  right: 25%;
   border: 2px solid rgb(126, 93, 0);
-  height: 10%;
-  width: 30%;
+  height: 5%;
+  width: 20%;
   background-color: rgba(62, 68, 73, 0.357);
   color: #B0903D;
-  font-size: 30px;
+  font-size: 19px;
   border-radius: 20px;
   margin-bottom: 3%;
   animation: 3s buttonFadeIn ease-out, once;
@@ -64,7 +63,6 @@ a {
 
 .explore-button:hover {
   border: 3px solid rgb(126, 93, 0);
-  /* font-size: 32px; */
   background-color: rgba(170, 174, 176, 0.168);
   color:#B0903D;
   cursor: pointer;
@@ -115,10 +113,6 @@ a {
   flex-direction: column;
 }
 
-.about {
-  color:white;
-}
-
 #videoBG {
   z-index: -2;
   position: fixed;
@@ -127,8 +121,6 @@ a {
   min-width: 100%;
   min-height: 100%;
   background-size: cover;
-
-
 }
 
 canvas {
@@ -140,18 +132,49 @@ canvas {
 }
 
 
-
-
-.test-button {
+.learn-button {
+  font-family: 'serif';
   position: absolute;
-  top:125%;
-  left: 35%;
-  border: 8px solid rgb(126, 93, 0);
-  height: 10%;
-  width: 30%;
+  top: 85%;
+  left: 25%;
+  border: 2px solid rgb(126, 93, 0);
+  height: 5%;
+  width: 20%;
   background-color: rgba(62, 68, 73, 0.357);
   color: #B0903D;
-  font-size: 30px;
+  font-size: 19px;
   border-radius: 20px;
   margin-bottom: 3%;
+  animation: 3s buttonFadeIn ease-out, once;
+}
+
+.learn-button:hover {
+  border: 3px solid rgb(126, 93, 0);
+  background-color: rgba(170, 174, 176, 0.168);
+  color:#B0903D;
+  cursor: pointer;
+}
+
+.container {
+  background-color: rgba(0, 0, 0, 0.737);
+  display: flex;
+  font-size: 1.5em;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  /* border: 2px solid red; */
+  top: 120%;
+  margin: 5em;
+  color:white;
+  animation: 3s titleFadeIn ease-out, once;
+  padding-bottom: 0.5em;
+}
+
+.fa-microphone {
+  padding-right: 0.5em;
+}
+
+li {
+  list-style: none;
+  margin: 1em;
 }
