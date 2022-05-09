@@ -12,21 +12,21 @@ const UploadButton = () => {
 
   // const onSubmit = (data) => {
 
-    const reader = new FileReader();
-    reader.onload = function(e) {
-      const text = e.target.result
+    // const reader = new FileReader();
+    // reader.onload = function(e) {
+    //   const text = e.target.result
 
-      axios.post('/api/emotions', {
-        text: text
-      })
-      .then((emotions) => {
-        console.log('emotions.data:::', emotions.data);
-        setAnalyze(emotions.data)
-      })
-      .catch((err) => {
-        console.error(err)
-      })
-    };
+    //   axios.post('/api/emotions', {
+    //     text: text
+    //   })
+    //   .then((emotions) => {
+    //     console.log('emotions.data:::', emotions.data);
+    //     setAnalyze(emotions.data)
+    //   })
+    //   .catch((err) => {
+    //     console.error(err)
+    //   })
+    // };
 
   //   reader.readAsText(data.firstName[0]);
   // }
