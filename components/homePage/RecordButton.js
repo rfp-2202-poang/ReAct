@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import PreviewText from "./PreviewText.js";
+import PreviewText from '../editPage/PreviewText.js';
 import styles from '../../styles/RecordButton.module.css'
 
 export default function RecordButton() {

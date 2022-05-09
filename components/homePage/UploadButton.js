@@ -4,7 +4,7 @@ import styles from '../../styles/UploadButton.module.css';
 import React, { useState } from "react";
 import axios from 'axios';
 
-const UploadButton = ({ updateScript }) => {
+const UploadButton = ({ setScript }) => {
 
   const hiddenFileInput = React.useRef(null);
 
@@ -12,7 +12,7 @@ const UploadButton = ({ updateScript }) => {
     const reader = new FileReader();
     reader.onload = function (e) {
       const text = e.target.result;
-      updateScript(text);
+      setScript(text);
     };
 
     reader.readAsText(file);
