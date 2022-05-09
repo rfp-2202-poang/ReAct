@@ -1,7 +1,7 @@
-export default function Analysis() {
+export default function Analysis({ script }) {
   return (
     <div>
-      Hello Analysis
+      {script}
     </div>
   )
 }
