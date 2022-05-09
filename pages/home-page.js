@@ -12,14 +12,21 @@ export default function homePage() {
 
 return (
     <div className={styles.container}>
-      <title>Home</title>
-      <div>this is the home page</div>
-      <UploadButton></UploadButton>
+      <div className={styles.header}>
+        <h1 className={styles.title}>SCRIPT.LY</h1>
+      </div>
+      <div className={styles.body}>
+        <span className={styles.span}>Upload your script to get started</span>
+        <UploadButton />
+        <RecordButton />
+        <AnalyzeButton text={text}/>
+      </div>
+      {/* <UploadButton></UploadButton> */}
       {/* <Analyze></Analyze> */}
       {/* <ConvertToSpeech></ConvertToSpeech> */}
       {/* <ConvertToText></ConvertToText> */}
-      <RecordButton />
-      <AnalyzeButton text={text}/>
+      {/* <RecordButton />
+      <AnalyzeButton text={text}/> */}
     </div>
   );
 }
