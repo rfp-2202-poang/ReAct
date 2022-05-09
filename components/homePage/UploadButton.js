@@ -7,10 +7,10 @@ import axios from 'axios';
 
 const UploadButton = () => {
 
-  const { register, handleSubmit } = useForm();
-  const [analyze, setAnalyze] = useState('');
+  // const { register, handleSubmit } = useForm();
+  // const [analyze, setAnalyze] = useState('');
 
-  const onSubmit = (data) => {
+  // const onSubmit = (data) => {
 
     const reader = new FileReader();
     reader.onload = function(e) {
@@ -28,14 +28,22 @@ const UploadButton = () => {
       })
     };
 
-    reader.readAsText(data.firstName[0]);
-  }
+  //   reader.readAsText(data.firstName[0]);
+  // }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className={styles.input}>
-      <input {...register("firstName", { required: true })} type='file' />
-      {/* <button>Analyze Script</button> */}
-    </form>
+    // <form onSubmit={handleSubmit(onSubmit)} className={styles.input}>
+    //   <input {...register("firstName", { required: true })} type='file' />
+    //   {/* <button>Analyze Script</button> */}
+    // </form>
+    <div>
+      <input
+        type="file"
+        onChange={(event) => handleFileUpload(event.target.files[0])}
+        className={styles.input}
+      />
+    {/* <button onClick={getEmotions(currentScript)}>Analyze Script</button> */}
+    </div>
   )
 }
 
