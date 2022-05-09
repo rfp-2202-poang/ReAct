@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import styles from '../../styles/Home.module.css'
-import React, { useState, useEffect } from 'react';
+import styles from '../../styles/UploadButton.module.css'
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
 
@@ -32,9 +32,9 @@ const UploadButton = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmit)} className={styles.input}>
       <input {...register("firstName", { required: true })} type='file' />
-      <button>Analyze Script</button>
+      {/* <button>Analyze Script</button> */}
     </form>
   )
 }
