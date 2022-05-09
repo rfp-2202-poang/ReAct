@@ -1,7 +1,9 @@
-export default function Edit() {
+import PreviewText from '../components/editPage/PreviewText.js';
+
+export default function Edit({ script, updateScript }) {
   return (
-    <div>
-      Hello Edit
-    </div>
+    <>
+      <PreviewText script={script} updateScript={updateScript}/>
+    </>
   )
 }

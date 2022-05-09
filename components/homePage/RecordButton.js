@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import PreviewText from "./PreviewText.js";
+import PreviewText from "../editPage/PreviewText.js";
 
 export default function RecordButton() {
   const recognition = useRef(null);
