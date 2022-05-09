@@ -8,7 +8,7 @@ import ConvertToText from "../components/homePage/ConvertToText.js";
 
 const text = 'My fellow citizens: I stand here today humbled by the task before us, grateful for the trust you have bestowed, mindful of the sacrifices borne by our ancestors. I thank President Bush for his service to our nation, as well as the generosity and cooperation he has shown throughout this transition. Forty-four Americans have now taken the presidential oath.'
 
-export default function homePage() {
+export default function homePage( {updateScript} ) {
 
 return (
     <div className={styles.container}>
@@ -17,7 +17,7 @@ return (
       </div>
       <div className={styles.body}>
         <span className={styles.span}>Upload your script to get started</span>
-        <UploadButton />
+        <UploadButton updateScript={updateScript}/>
         <RecordButton />
         <AnalyzeButton text={text}/>
       </div>
