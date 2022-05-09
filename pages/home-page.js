@@ -17,7 +17,7 @@ return (
       {/* <ConvertToSpeech></ConvertToSpeech> */}
       {/* <ConvertToText></ConvertToText> */}
       <RecordButton />
-      <AnalyzeButton text={text}/>
+      {/* <AnalyzeButton text={text}/> */}
     </div>
   );
 }

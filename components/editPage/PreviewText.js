@@ -1,8 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import styles from '../../styles/PreviewText.module.css';
+// import { BsArrowLeft } from 'react-icons/bs';
 
 export default function PreviewText({ script, setScript }) {
+  const textarea_ref = useRef();
+
+  useEffect(() => {
+    textarea_ref.current.focus();
+  }, []);
 
   const handleTextChange = (event) => {
     setScript(event.target.value);
@@ -10,12 +16,13 @@ export default function PreviewText({ script, setScript }) {
 
   return (
     <>
-      {/* <div className={styles.header}>
-        <h1 className={styles.title}>SCRIPT.LY</h1>
-      </div> */}
       <div className={styles.container}>
-        <textarea autoFocus className={styles.text} onChange={handleTextChange}>
-          {script}
+        {/* <BsArrowLeft className={styles.back}/> */}
+        <textarea
+          ref={textarea_ref}
+          className={styles.text}
+          onChange={handleTextChange}
+          value={script}>
         </textarea>
       </div>
     </>
