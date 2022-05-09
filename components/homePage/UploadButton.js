@@ -3,6 +3,7 @@ import Image from 'next/image'
 import styles from '../../styles/UploadButton.module.css'
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import axios from 'axios';
 
 const UploadButton = () => {
 
@@ -13,8 +14,18 @@ const UploadButton = () => {
 
     const reader = new FileReader();
     reader.onload = function(e) {
-      console.log('e.target.result:::', e.target.result);
-      setAnalyze(e.target.result)
+      const text = e.target.result
+
+      axios.post('/api/emotions', {
+        text: text
+      })
+      .then((emotions) => {
+        console.log('emotions.data:::', emotions.data);
+        setAnalyze(emotions.data)
+      })
+      .catch((err) => {
+        console.error(err)
+      })
     };
 
     reader.readAsText(data.firstName[0]);
