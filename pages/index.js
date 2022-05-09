@@ -84,7 +84,7 @@ export default function Home() {
     // scene.environment = env;
 
     // Orient 3D Space
-    scene.add(new THREE.AxesHelper(500))
+    // scene.add(new THREE.AxesHelper(500))
 
     // Assign Ref property for later cleanup
     const cleanup = mountRef.current;
