@@ -42,7 +42,7 @@ const UploadButton = () => {
         onChange={(event) => handleFileUpload(event.target.files[0])}
         className={styles.input}
       />
-    <button onClick={getEmotions(currentScript)}>Analyze Script</button>
+    {/* <button onClick={getEmotions(currentScript)}>Analyze Script</button> */}
     </div>
   )
 }
