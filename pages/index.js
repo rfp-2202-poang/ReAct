@@ -1,15 +1,29 @@
 import React, { useState, useEffect, useRef } from "react";
 import * as THREE from "three";
-import { OBJLoader } from "three/examples/jsm/loaders/OBJLoader.js";
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
-import { MTLLoader } from "three/examples/jsm/loaders/MTLLoader.js";
-import { RGBELoader } from "three/examples/jsm/loaders/RGBELoader";
-import gsap from "gsap";
-import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
-import Link from "next/link";
-// import styles from '../styles/Home.module.css';
+import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader.js';
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+import { MTLLoader } from 'three/examples/jsm/loaders/MTLLoader.js';
+import { RGBELoader } from 'three/examples/jsm/loaders/RGBELoader'
+import gsap from 'gsap';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
+import Link from 'next/link';
+import About from '../components/About.js';
+
 
 export default function Home() {
+
+  const [showAbout, setShowAbout] = useState(false);
+
+  const handleClick = () => {
+
+    Promise.all([setShowAbout(true)])
+    .then(() => {
+      const element = document.querySelector(".about");
+      element.scrollIntoView({behavior : 'smooth'});
+    })
+  }
+
+
   const mountRef = useRef(null);
 
   useEffect(() => {
@@ -31,14 +45,13 @@ export default function Home() {
       // camera.updateProjectionMatrix();
     }
 
-    // These do something important I think
+    // Corrects material output
     renderer.outputEncoding = THREE.sRGBEncoding;
 
     renderer.setPixelRatio(window.devicePixelRatio);
 
     // Get window sizes
     renderer.setSize(window.innerWidth, window.innerHeight);
-    // renderer.setClearColor(0x7ec0ee, 1);
 
     //-------------- LIGHTING--------------
     // scene.background = new THREE.Color(0xdddddd)
@@ -75,7 +88,12 @@ export default function Home() {
     // scene.add(spotHelper);
     //-------------------------------------------
 
+<<<<<<< HEAD
     // ENVIRONMENT
+=======
+
+    // ENVIRONMENT (Disabled)
+>>>>>>> origin
     // const env = new RGBELoader().load('models/studio_small_08_1k.hdr');
     // scene.environment = env;
 
@@ -103,10 +121,11 @@ export default function Home() {
     // // scene.add(ground);
 
     // -------------------------------------------------
+
     // Start camera farther away
     camera.position.z = 8;
 
-    // LOAD OBJECT
+    //-------------- LOAD OBJECT --------------------------
     const loader = new GLTFLoader();
     loader.load("models/GoldenMicNoCable.glb", (gltf) => {
       let model = gltf.scene;
@@ -115,9 +134,9 @@ export default function Home() {
       gsap.to(camera.position, {
         z: 3,
         duration: 1.5,
-        ease: "power1.out",
-      });
-      model.position.set(-0.15, 0, 0);
+        ease: 'power1.out',
+      })
+      model.position.set(-0.15, 0, -0.15)
       scene.add(model);
     });
 
@@ -151,6 +170,7 @@ export default function Home() {
 
   return (
     <>
+<<<<<<< HEAD
       <div className="view-one">
         <div ref={mountRef}>
           <h1 className="title">Script.ly</h1>
@@ -167,6 +187,21 @@ export default function Home() {
           muted
         ></video>
       </div>
+=======
+    <div className="view-one">
+      <div ref={mountRef}>
+        <h1 className="title">
+          Script.ly
+        </h1>
+        <Link href="/home-page">
+        <button className="explore-button">RECORD or UPLOAD</button>
+        </Link>
+        <button onClick={handleClick} className="learn-button">LEARN MORE</button>
+      </div>
+        <video id="videoBG" loop src="models/gold_dust_particles.mp4" autoPlay muted></video>
+        {showAbout === true ? <About /> : null}
+    </div>
+>>>>>>> origin
     </>
   );
 }
