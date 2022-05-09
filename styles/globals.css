@@ -132,7 +132,7 @@ canvas {
 }
 
 
-.test-button {
+.learn-button {
   font-family: 'serif';
   position: absolute;
   top: 85%;
@@ -148,7 +148,7 @@ canvas {
   animation: 3s buttonFadeIn ease-out, once;
 }
 
-.test-button:hover {
+.learn-button:hover {
   border: 3px solid rgb(126, 93, 0);
   background-color: rgba(170, 174, 176, 0.168);
   color:#B0903D;
@@ -158,6 +158,7 @@ canvas {
 .container {
   background-color: rgba(0, 0, 0, 0.737);
   display: flex;
+  font-size: 1.5em;
   flex-direction: column;
   align-items: center;
   position: absolute;
@@ -166,4 +167,14 @@ canvas {
   margin: 5em;
   color:white;
   animation: 3s titleFadeIn ease-out, once;
+  padding-bottom: 0.5em;
+}
+
+.fa-microphone {
+  padding-right: 0.5em;
+}
+
+li {
+  list-style: none;
+  margin: 1em;
 }

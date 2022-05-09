@@ -167,7 +167,7 @@ export default function Home() {
         <Link href="/home-page">
         <button className="explore-button">RECORD or UPLOAD</button>
         </Link>
-        <button onClick={handleClick} className="test-button">LEARN MORE</button>
+        <button onClick={handleClick} className="learn-button">LEARN MORE</button>
       </div>
         <video id="videoBG" loop src="models/gold_dust_particles.mp4" autoPlay muted></video>
         {showAbout === true ? <About /> : null}
