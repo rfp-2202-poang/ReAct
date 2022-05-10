@@ -39,7 +39,7 @@ const AnalyzeChart = ({emotion}) => {
   // console.log(data)
 
   return (
-    <div>
+    // <div>
       <BarChart
       width={700}
       height={400}
@@ -59,7 +59,7 @@ const AnalyzeChart = ({emotion}) => {
       <Bar dataKey="emotions" fill="#c5af75" />
     </BarChart>
 
-    </div>
+    // </div>
   )
 }
 

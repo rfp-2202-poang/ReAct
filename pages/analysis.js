@@ -108,13 +108,13 @@ export default function Analysis({ script }) {
           <span className={styles.script}>{script}</span>
 
           <div className={styles.chartBox}>
-            {/* <div className={styles.emotionTitle}>Full Document - Emotion Analysis</div> */}
+            <div className={styles.emotionTitle}>Full Document - Emotion Analysis</div>
             <div className={styles.charts}>
             <AnalyzeChart emotion={emotion}/>
             {results.keywords.map((item, i) => {
               return (
                 <div key={i}>
-                  <h3 className={styles.emotionTitle}> Keyword: {item.text} Emotion Analysis </h3>
+                  <span className={styles.emotionTitle}> Keyword: {item.text} Emotion Analysis </span>
                   <AnalyzeChart emotion={item.emotion} ></AnalyzeChart>
                 </div>
               )
