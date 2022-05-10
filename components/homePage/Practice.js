@@ -5,7 +5,8 @@ import styles from '../../styles/Practice.module.css';
 import { CgPlayButtonO } from "react-icons/cg";
 import { CgPlayPauseO } from "react-icons/cg";
 import { CgPlayTrackPrevO } from "react-icons/cg";
-
+import { BsArrowLeft } from 'react-icons/bs';
+import Link from 'next/link';
 
 const Practice = ({ script, setScript, setUploadComplete }) => {
 
@@ -18,6 +19,7 @@ const Practice = ({ script, setScript, setUploadComplete }) => {
   const [hints, setHints] = useState([]);
   const [start, setStart] = useState(-1);
   const [practicing, setPracticing] = useState(false);
+  const [paused, setPaused] = useState(false);
 
   const handleNameChange = (e) => {
     setName(e.target.value);
@@ -34,9 +36,7 @@ const Practice = ({ script, setScript, setUploadComplete }) => {
 
   const playLine = () => {
     const line = scriptToRead[lineToRead];
-
     console.log(line);
-
       let utterance = new SpeechSynthesisUtterance(line);
       speechSynthesis.speak(utterance);
       if(lineToRead < scriptToRead.length - 1){
@@ -55,27 +55,50 @@ const Practice = ({ script, setScript, setUploadComplete }) => {
 
   const pause = () => {
     var synth = window.speechSynthesis;
-    synth.pause();
+    setPaused(!paused);
+    if(paused) {
+      synth.resume();
+
+    } else {
+      synth.pause();
+    }
   }
 
     return (
       <div className={styles.container}>
-        <div className={styles.text}>
-        {/* !practicing && */ script.split('\n').map((para, index) =><p
-            key={index}
-            onClick={()=> {
-              let utterance = new SpeechSynthesisUtterance(para);
-              speechSynthesis.speak(utterance);
-            }}>{para}</p>)}
+        <div className={styles.header}>
+          <h1 className={styles.title}>SCRIPT.LY</h1>
         </div>
-        <div>
-          <form onSubmit={onSubmit}>
-            <input type='text' placeholder='your character' onChange={handleNameChange}/>
-            <button className={styles.button}>Start Practice</button>
-          </form>
-          <CgPlayButtonO className={styles.icons} onClick={playLine} />
-          <CgPlayPauseO className={styles.icons} onClick={pause} />
-          <CgPlayTrackPrevO className={styles.icons} onClick={reset}/>
+        <div className={styles.rowContainer}>
+        <Link href='/edit'>
+          <BsArrowLeft className={styles.back}/>
+        </Link>
+          <div className={styles.text} >
+          {/* !practicing && */ script.split('\n').map((para, index) =><p
+              key={index}
+              className={styles.paragraph}
+              onClick={()=> {
+                let utterance = new SpeechSynthesisUtterance(para);
+                speechSynthesis.speak(utterance);
+              }}>{para}</p>)}
+          </div>
+
+          <div className={styles.right}>
+            <form onSubmit={onSubmit} className={styles.form}>
+              <input
+              type='text'
+              placeholder='your character'
+              onChange={handleNameChange}
+              className={styles.input}
+              />
+              <button className={styles.button}>Start Practice</button>
+            </form>
+            <div className={styles.smallButtons}>
+              <CgPlayButtonO className={styles.icons} onClick={playLine} />
+              <CgPlayPauseO className={styles.icons} onClick={pause} />
+              <CgPlayTrackPrevO className={styles.icons} onClick={reset}/>
+            </div>
+          </div>
         </div>
       </div>
     )
