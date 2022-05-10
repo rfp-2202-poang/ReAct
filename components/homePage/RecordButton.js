@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import styles from '../../styles/UploadButton.module.css';
 import { BsFillCircleFill } from 'react-icons/bs';
 
-export default function RecordButton({ setScript }) {
+export default function RecordButton({ setScript, setUploadComplete }) {
   const recognition = useRef(null);
   const [record, setRecord] = useState(false);
 
@@ -38,6 +38,7 @@ export default function RecordButton({ setScript }) {
         console.log(event.error);
       }
     }
+    setUploadComplete(true);
     setRecord(!record);
   };
 
