@@ -31,23 +31,105 @@ a {
   z-index: 10;
   width: 100%;
   text-align: center;
-  transform: translate(0, 50%);
   font-family:'Alfa Slap One';
   font-weight: 600;
   letter-spacing: 45px;
   text-transform: uppercase;
   font-size: 52px;
 
-  background: -webkit-linear-gradient(rgb(255, 238, 53), rgb(245, 180, 1), rgba(0, 0, 0, 0.989));
+  background: -webkit-linear-gradient(rgb(255, 238, 53) 0%, rgb(245, 180, 1) 29%, rgba(0, 0, 0, 0.989));
   background-clip: text;
   -webkit-text-fill-color: transparent;
+
+  animation: 4.5s titleFadeIn ease-out, once;
+
 }
-/*
+
+.explore-button {
+  font-family: 'Alfa Slap One';
+  position: absolute;
+  top: 85%;
+  left: 35%;
+  border: 2px solid rgb(126, 93, 0);
+  height: 10%;
+  width: 30%;
+  background-color: rgba(62, 68, 73, 0.357);
+  color: #B0903D;
+  font-size: 30px;
+  border-radius: 20px;
+  margin-bottom: 3%;
+  animation: 3s buttonFadeIn ease-out, once;
+}
+
+
+.explore-button:hover {
+  border: 3px solid rgb(126, 93, 0);
+  /* font-size: 32px; */
+  background-color: rgba(170, 174, 176, 0.168);
+  color:#B0903D;
+  cursor: pointer;
+}
+
+@keyframes buttonFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20%);
+  }
+
+  50% {
+    opacity: 0;
+
+  }
+
+  80% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+
+@keyframes titleFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(80%);
+  }
+  20% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+
 .view-one {
   display: flex;
   flex-direction: column;
+}
 
-} */
+.about {
+  color:white;
+}
+
+#videoBG {
+  z-index: -2;
+  position: fixed;
+  top:0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
+  background-size: cover;
+
+
+}
 
 canvas {
   position: fixed;
@@ -57,14 +139,17 @@ canvas {
   z-index: -1;
 }
 
-.button {
+
+
+
+.test-button {
   position: absolute;
-  top: 85%;
+  top:125%;
   left: 35%;
-  border: 8px solid #B0903D;
+  border: 8px solid rgb(126, 93, 0);
   height: 10%;
   width: 30%;
-  background-color: rgba(62, 68, 73, 0.5);
+  background-color: rgba(62, 68, 73, 0.357);
   color: #B0903D;
   font-size: 30px;
   border-radius: 20px;

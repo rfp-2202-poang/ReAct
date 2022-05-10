@@ -6,18 +6,30 @@ import { MTLLoader } from 'three/examples/jsm/loaders/MTLLoader.js';
 import { RGBELoader } from 'three/examples/jsm/loaders/RGBELoader'
 import gsap from 'gsap';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
+import Link from 'next/link';
 // import styles from '../styles/Home.module.css';
 
 
 
 export default function Home() {
 
+
   const mountRef = useRef(null);
 
   useEffect(() => {
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(70, window.innerHeight / window.innerHeight, 0.1, 1000);
-    const renderer = new THREE.WebGLRenderer({ antialias: true });
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer.setClearColor( 0x000000, 0 ); // the default
+
+
+    // Handle window resizing
+    window.addEventListener('resize', onWindowResize, false);
+    function onWindowResize() {
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      camera.aspect = window.innerWidth / window.innerHeight;
+      // camera.updateProjectionMatrix();
+    }
 
     // These do something important I think
     renderer.outputEncoding = THREE.sRGBEncoding;
@@ -92,7 +104,7 @@ export default function Home() {
 
     // LOAD OBJECT
     const loader = new GLTFLoader();
-    loader.load('models/del.glb', (gltf) => {
+    loader.load('models/GoldenMicNoCable.glb', (gltf) => {
       let model = gltf.scene;
 
       // On load, animate camera position
@@ -101,6 +113,7 @@ export default function Home() {
         duration: 1.5,
         ease: 'power1.out',
       })
+      model.position.set(-0.15, 0, 0)
       scene.add(model);
     })
 
@@ -135,14 +148,20 @@ export default function Home() {
   }, []);
 
   return (
+    <>
     <div className="view-one">
       <div ref={mountRef}>
         <h1 className="title">
-              Script.ly
+          Script.ly
         </h1>
-        <button className="button">Explore</button>
+        <Link href="/home-page">
+        <button className="explore-button">RECORD or UPLOAD</button>
+        </Link>
+        {/* <button className="test-button">Test</button> */}
       </div>
+        <video id="videoBG" loop src="models/gold_dust_particles.mp4" autoPlay muted></video>
     </div>
+    </>
   )
 }
 
