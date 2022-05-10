@@ -1,10 +1,12 @@
-import React, { useState, useRef } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheckSquare, faCoffee, faMicrophone } from '@fortawesome/free-solid-svg-icons';
-
+import React, { useState, useRef } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faCheckSquare,
+  faCoffee,
+  faMicrophone,
+} from "@fortawesome/free-solid-svg-icons";
 
 const About = () => {
-
   return (
     <>
     <div className="container">
@@ -21,7 +23,7 @@ const About = () => {
       </p>
     </div>
     </>
-  )
-}
+  );
+};
 
 export default About;
