@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import PreviewText from '../editPage/PreviewText.js';
-import styles from '../../styles/RecordButton.module.css'
+import styles from '../../styles/UploadButton.module.css'
 
 export default function RecordButton() {
   const recognition = useRef(null);
