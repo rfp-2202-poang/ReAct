@@ -25,7 +25,7 @@ export default function AnalyzeButton({ script, setAnalysis , setAnalysisArr}) {
   return (
     <>
       <Link href='/analysis'>
-      <button className={buttonStyles.button} onClick={getCharts}>Analyze</button>
+      <button onClick={getCharts} className={buttonStyles.button}>Analyze</button>
       </Link>
     </>
   );

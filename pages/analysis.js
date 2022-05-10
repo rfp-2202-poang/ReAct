@@ -1,7 +1,10 @@
 import styles from "../styles/Analysis.module.css";
+import buttonStyles from '../styles/Button.module.css';
 import AnalyzeChart from '../components/homePage/AnalyzeChart.js'
+import { BsArrowLeft } from 'react-icons/bs';
+import Link from 'next/link';
 
-export default function Analysis({ script , analysis , analysisArr}) {
+export default function Analysis({ script, analysis, analysisArr }) {
 
   return (
     <div className={styles.container}>
@@ -10,30 +13,39 @@ export default function Analysis({ script , analysis , analysisArr}) {
       </div>
 
       <div className={styles.body}>
+        <Link href='/edit'>
+          <BsArrowLeft className={styles.back} />
+        </Link>
         <div className={styles.rowcontainer}>
 
-          <span className={styles.script}>{script}</span>
+          <textarea
+            className={styles.script}
+            value={script}
+            disabled>
+          </textarea>
 
           <div className={styles.chartBox}>
-            <div className={styles.emotionTitle}>Full Document - Emotion Analysis</div>
-            <div className={styles.charts}>
-            <AnalyzeChart emotion={analysis}/>
-            {analysisArr.map((item, i) => {
+
+            {/* <div className={styles.charts}> */}
+            <span className={styles.emotionTitle}>Full Document - Emotion Analysis</span>
+            <AnalyzeChart emotion={analysis} />
+            {/* {analysisArr.map((item, i) => {
               return (
-                <div key={i}>
+                <>
                   <span className={styles.emotionTitle}> Keyword: {item.text} Emotion Analysis </span>
                   <AnalyzeChart emotion={item.emotion} ></AnalyzeChart>
-                </div>
+                </>
               )
-            })}
-            </div>
+            })} */}
+            {/* </div> */}
           </div>
         </div>
-
-        <button className={styles.button}>Dialog Practice</button>
-
+        <div className={styles.nav}>
+          <Link href='/practice'>
+            <button className={buttonStyles.button}>Practice</button>
+          </Link>
+        </div>
       </div>
-
     </div>
   )
 }

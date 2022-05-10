@@ -51,7 +51,11 @@
   width: 7%;
   color: #B0903D;
   margin-top: 2.5vh;
-  /* transform: translate(20%, 100%); */
+}
+
+.forward:hover {
+  cursor: pointer;
+  opacity: 0.7;
 }
 
 /*
