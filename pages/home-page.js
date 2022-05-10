@@ -10,6 +10,30 @@ import { BsArrowRight } from 'react-icons/bs';
 
 export default function homePage({ script, setScript, uploadComplete, setUploadComplete }) {
 
+  const checkUploadValid = () => {
+    if (!uploadComplete) {
+      return null;
+    } else if (uploadComplete && script.length < 100) {
+      return (
+        <div className={styles.completeContainer}>
+          <div style={{ fontSize: '15px', marginTop: '1rem', color: 'red' }}>Script too short, please try again!</div>
+        </div>
+      )
+    } else {
+      return (
+        <>
+        <div className={styles.completeContainer}>
+          <IoMdCheckmarkCircleOutline style={{ fontSize: '4rem' }} />
+          <div style={{ fontSize: '15px', marginTop: '1rem' }}>Upload Complete!</div>
+        </div>
+          <Link href='/edit'>
+            <BsArrowRight className={styles.forward} />
+          </Link>
+        </>
+      )
+    }
+  }
+
   return (
     <div className={styles.container}>
       <div className={styles.header}>
@@ -18,15 +42,8 @@ export default function homePage({ script, setScript, uploadComplete, setUploadC
       <div className={styles.body}>
         <span className={styles.span}>Upload your script to get started</span>
         <UploadButton setScript={setScript} setUploadComplete={setUploadComplete} />
-        <RecordButton setScript={setScript} />
-        {uploadComplete ? <><div className={styles.completeContainer}>
-          <IoMdCheckmarkCircleOutline style={{ fontSize: '4rem' }} />
-          <div style={{ fontSize: '15px', marginTop: '1rem' }}>Upload Complete!</div>
-        </div>
-        <Link href='/edit'>
-            <BsArrowRight className={styles.forward} />
-          </Link>
-        </> : null}
+        <RecordButton setScript={setScript} setUploadComplete={setUploadComplete} />
+        {checkUploadValid()}
         {/* <AnalyzeButton script={script}/> */}
       </div>
 

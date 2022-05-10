@@ -1,17 +1,10 @@
 import styles from "../styles/Analysis.module.css";
 import AnalyzeChart from '../components/homePage/AnalyzeChart.js'
+import { BsArrowLeft } from 'react-icons/bs';
+import Link from 'next/link';
 
-const emotion = {
-  "sadness": 0.041851,
-  "joy": 0.71761,
-  "fear": 0.03713,
-  "disgust": 0.100171,
-  "anger": 0.042882
-}
+export default function Analysis({ script , analysis , analysisArr}) {
 
-
-export default function Analysis({ script }) {
-  //useEffect
   return (
     <div className={styles.container}>
       <div className={styles.header}>
@@ -19,16 +12,40 @@ export default function Analysis({ script }) {
       </div>
 
       <div className={styles.body}>
+      <Link href='/edit'>
+          <BsArrowLeft className={styles.back}/>
+        </Link>
         <div className={styles.rowcontainer}>
-          <span className={styles.script}>{script}</span>
-          {/* <span className={styles.line}></span> */}
-          <div className={styles.chart}>
-            <div className={styles.emotionTitle}>Emotion Analysis</div>
-          <AnalyzeChart emotion={emotion}/>
+
+          <textarea
+            className={styles.script}
+            value={script}
+            disabled>
+          </textarea>
+
+          <div className={styles.chartBox}>
+
+            {/* <div className={styles.charts}> */}
+            <span className={styles.emotionTitle}>Full Document - Emotion Analysis</span>
+            <AnalyzeChart emotion={analysis}/>
+            {/* {analysisArr.map((item, i) => {
+              return (
+                <>
+                  <span className={styles.emotionTitle}> Keyword: {item.text} Emotion Analysis </span>
+                  <AnalyzeChart emotion={item.emotion} ></AnalyzeChart>
+                </>
+              )
+            })} */}
+            {/* </div> */}
           </div>
         </div>
-        <button className={styles.button}>Dialog Practice</button>
+
+        <Link href='/practice'>
+          <button className={styles.button}>Practice</button>
+        </Link>
+
       </div>
+
     </div>
   )
 }
