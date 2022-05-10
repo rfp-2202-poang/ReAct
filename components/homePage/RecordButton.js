@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
-import PreviewText from "./PreviewText.js";
+import PreviewText from '../editPage/PreviewText.js';
+import styles from '../../styles/UploadButton.module.css'
 
 export default function RecordButton() {
   const recognition = useRef(null);
@@ -53,9 +54,18 @@ export default function RecordButton() {
 
   return (
     <>
-      {record ? <button onClick={toggleRecord}>Stop Recording</button> : <button onClick={toggleRecord}>Start Record</button>}
-      {transcript ? <button onClick={togglePreview}>Preview</button> : null}
+    {/* <div className={styles.container}> */}
+      {record
+      ? <button onClick={toggleRecord} className={styles.button}>Stop</button>
+      : <button onClick={toggleRecord} className={styles.button}>Record</button>}
+      <p className={styles.format}>Supported formats: .mp3</p>
+    {/* </div> */}
+
+      {transcript
+      ? <button onClick={togglePreview} className={styles.button}>Preview</button>
+      : null}
       {preview ? <PreviewText text={transcript} /> : null}
+
     </>
   )
 }

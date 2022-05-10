@@ -7,3 +7,4 @@ export default function handler(req, res) {
     .then((results) => res.status(200).send(results.result))
     .catch((err) => res.status(404).send(err));
 }
+
