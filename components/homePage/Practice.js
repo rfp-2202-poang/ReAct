@@ -1,30 +1,34 @@
 import React, { useState, useEffect } from 'react';
 import textParser from '../../helpers/textParser.js';
-import { useForm } from 'react-hook-form';
+// import { useForm } from 'react-hook-form';
+import styles from '../../styles/Practice.module.css';
+import { CgPlayButtonO } from "react-icons/cg";
+import { CgPlayPauseO } from "react-icons/cg";
+import { CgPlayTrackPrevO } from "react-icons/cg";
 
 
-const Practice = () => {
-  const { register, handleSubmit } = useForm();
+const Practice = ({ script, setScript, setUploadComplete }) => {
+
+  // const { register, handleSubmit } = useForm();
   const [name, setName] = useState('');
   const [currentLine, setCurrentLine] = useState(0);
   const [scriptToRead, setScriptToRead] = useState([]);
   const [scriptToDisplay, setScriptToDisplay] = useState('');
   const [lineToRead, setLineToRead] = useState(0);
+  const [hints, setHints] = useState([]);
+  const [start, setStart] = useState(-1);
+  const [practicing, setPracticing] = useState(false);
 
   const handleNameChange = (e) => {
     setName(e.target.value);
   }
-  const onSubmit = (data) => {
-
-    const reader = new FileReader();
-    reader.onload = function(e) {
-      const text = e.target.result
-      console.log('text', typeof text)
-      console.log('name', typeof name)
-      setScriptToDisplay(text)
-      setScriptToRead(textParser(text, name));
-    };
-    reader.readAsText(data.file[0]);
+  const onSubmit = (event) => {
+      event.preventDefault();
+      setPracticing(true);
+      const parsedScript = textParser(script, name)
+      setScriptToRead(parsedScript.lines);
+      setHints(parsedScript.hints);
+      setStart(parsedScript.start);
   }
 
 
@@ -42,14 +46,37 @@ const Practice = () => {
       }
 
   }
+  const reset = () =>{
+    setPracticing(false);
+    var synth = window.speechSynthesis;
+    synth.cancel();
+    setLineToRead(0);
+  }
+
+  const pause = () => {
+    var synth = window.speechSynthesis;
+    synth.pause();
+  }
+
     return (
-      <div>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <input {...register("file", { required: true })} type='file' />
-          <input type='text' placeholder='your character' onChange={handleNameChange}/>
-          <button>Generate Script</button>
-        </form>
-      <button onClick={playLine}>Play</button>
+      <div className={styles.container}>
+        <div className={styles.text}>
+        {/* !practicing && */ script.split('\n').map((para, index) =><p
+            key={index}
+            onClick={()=> {
+              let utterance = new SpeechSynthesisUtterance(para);
+              speechSynthesis.speak(utterance);
+            }}>{para}</p>)}
+        </div>
+        <div>
+          <form onSubmit={onSubmit}>
+            <input type='text' placeholder='your character' onChange={handleNameChange}/>
+            <button className={styles.button}>Start Practice</button>
+          </form>
+          <CgPlayButtonO className={styles.icons} onClick={playLine} />
+          <CgPlayPauseO className={styles.icons} onClick={pause} />
+          <CgPlayTrackPrevO className={styles.icons} onClick={reset}/>
+        </div>
       </div>
     )
 }

@@ -1,7 +1,7 @@
-export default function Practice() {
+import PracticeComponent from '../components/homePage/Practice.js';
+
+export default function Practice({ script }) {
   return (
-    <div>
-      Hello Practice
-    </div>
+      <PracticeComponent script={script}></PracticeComponent>
   )
 }

@@ -13,7 +13,7 @@ const About = () => {
         <li><FontAwesomeIcon icon={faMicrophone} /> Captivate your audience with Live Performance Practice.</li>
         <li><FontAwesomeIcon icon={faMicrophone} /> Record scripts on the fly with Voice-2-Script.</li>
         <li><FontAwesomeIcon icon={faMicrophone} /> Revise and edit your script with ease, even after upload.</li>
-        <li><FontAwesomeIcon icon={faMicrophone} /> Discover what message you're sending with Speech-Tone Analysis by IBM Watson.</li>
+        <li><FontAwesomeIcon icon={faMicrophone} /> Discover what message you&apos;re sending with Speech-Tone Analysis by IBM Watson.</li>
 
       </ul>
       <p>
