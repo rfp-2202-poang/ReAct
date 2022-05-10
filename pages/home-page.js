@@ -18,7 +18,7 @@ export default function homePage({ script, setScript, uploadComplete, setUploadC
       <div className={styles.body}>
         <span className={styles.span}>Upload your script to get started</span>
         <UploadButton setScript={setScript} setUploadComplete={setUploadComplete} />
-        <RecordButton />
+        <RecordButton setScript={setScript} />
         {uploadComplete ? <><div className={styles.completeContainer}>
           <IoMdCheckmarkCircleOutline style={{ fontSize: '4rem' }} />
           <div style={{ fontSize: '15px', marginTop: '1rem' }}>Upload Complete!</div>
