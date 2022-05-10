@@ -35,3 +35,15 @@
   color: #B0903D;
 }
 
+.blinking {
+  animation: 1s blink ease infinite;
+}
+
+@keyframes blink {
+  from, to {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
