@@ -10,18 +10,26 @@ const textToSpeech = new TextToSpeechV1({
 });
 
 const convertToSpeech = (synthesizeParams) => {
+  //const lineNumber = 0;
   return textToSpeech
     .synthesize(synthesizeParams)
     .then((response) => {
       // The following line is necessary only for
       // wav formats; otherwise, `response.result`
       // can be directly piped to a file.
-      return textToSpeech.repairWavHeaderStream(response.result);
+      // console.log(response.result);
+      // return textToSpeech.repairWavHeaderStream(response.result);
+      fs.writeFileSync(`public/audio/line.mp3`, response.result, {flag: 'w'});
+      return Promise.resolve();
     })
-    .then((buffer) => {
-      //currently stores audio file in root directory
-      fs.writeFileSync("hello_world.wav", buffer);
-    })
+    // .then((buffer) => {
+    //   //currently stores audio file in root directory
+    //   //console.log(typeof response.result);
+    //   fs.writeFileSync(`public/audio/line.mp3`, buffer);
+    //   return Promise.resolve();
+    // })
+    //then , push file into array at index
+    //increment index
     .catch((err) => {
       console.log("error:", err);
     });
