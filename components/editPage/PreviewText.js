@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import styles from '../../styles/PreviewText.module.css';
-// import { BsArrowLeft } from 'react-icons/bs';
 
 export default function PreviewText({ script, setScript }) {
   const textarea_ref = useRef();
@@ -17,7 +16,6 @@ export default function PreviewText({ script, setScript }) {
   return (
     <>
       <div className={styles.container}>
-        {/* <BsArrowLeft className={styles.back}/> */}
         <textarea
           ref={textarea_ref}
           className={styles.text}

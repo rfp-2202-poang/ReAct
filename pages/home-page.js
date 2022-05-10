@@ -16,7 +16,7 @@ return (
       <div className={styles.body}>
         <span className={styles.span}>Upload your script to get started</span>
         <UploadButton setScript={setScript}/>
-        <RecordButton />
+        <RecordButton setScript={setScript}/>
         {/* <AnalyzeButton script={script}/> */}
       </div>
       {/* <UploadButton></UploadButton> */}
