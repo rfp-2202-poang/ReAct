@@ -15,18 +15,19 @@ export default function Analysis({ script , analysis , analysisArr}) {
           <span className={styles.script}>{script}</span>
 
           <div className={styles.chartBox}>
-            <div className={styles.emotionTitle}>Full Document - Emotion Analysis</div>
-            <div className={styles.charts}>
+
+            {/* <div className={styles.charts}> */}
+            <span className={styles.emotionTitle}>Full Document - Emotion Analysis</span>
             <AnalyzeChart emotion={analysis}/>
             {analysisArr.map((item, i) => {
               return (
-                <div key={i}>
+                <>
                   <span className={styles.emotionTitle}> Keyword: {item.text} Emotion Analysis </span>
                   <AnalyzeChart emotion={item.emotion} ></AnalyzeChart>
-                </div>
+                </>
               )
             })}
-            </div>
+            {/* </div> */}
           </div>
         </div>
 
