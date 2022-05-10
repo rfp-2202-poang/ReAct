@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import AnalyzeChart from './AnalyzeChart.js';
 import {emotion, results} from './emotiondata.js';
 
-export default function AnalyzeButton({text}) {
+export default function AnalyzeButton({script}) {
 
   const [isAnalyzed, setAnalyzed] = useState(false);
   const [fullDoc, setFullDocChart] = useState({})
@@ -12,7 +12,7 @@ export default function AnalyzeButton({text}) {
   const getCharts = () => {
     axios
       .post("api/emotions", {
-        text: text
+        text: script
       })
       .then((res) => {
         // console.log(res.data);

@@ -9,12 +9,11 @@ const text = 'My fellow citizens: I stand here today humbled by the task before 
 
 function MyApp({ Component, pageProps }) {
   const [script, setScript] = useState(text);
+  const [uploadComplete, setUploadComplete] = useState(false);
 
-  const updateScript = (input) => {
-    setScript(input);
-  };
+  return <Component {...pageProps} script={script} setScript={setScript} setUploadComplete={setUploadComplete} uploadComplete={uploadComplete}/>
 
-  return <Component {...pageProps} script={script} updateScript={updateScript}/>
+
 }
 
 export default MyApp

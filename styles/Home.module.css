@@ -27,11 +27,31 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
 
 .span {
   color: #B0903D;
+  font-size: 4rem;
+  margin-bottom: 10vh;
+  text-align: center;
+}
 
+.completeContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #B0903D;
+  margin-top: 2.5vh;
+}
+
+.forward {
+  height: 7%;
+  width: 7%;
+  color: #B0903D;
+  margin-top: 2.5vh;
+  /* transform: translate(20%, 100%); */
 }
 
 /*
