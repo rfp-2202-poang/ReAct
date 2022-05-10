@@ -50,6 +50,7 @@
   margin: 5%;
   padding: 1%;
   background: rgba(176, 144, 61, 0.2);
+  border: none;
 
   font: 'Inter';
   font-style: normal;
@@ -60,12 +61,13 @@
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 53px;
   overflow-y: scroll;
+  resize: none;
 }
 .script::-webkit-scrollbar {
   width: 1em;
 }
 .script::-webkit-scrollbar-thumb {
-  background-color: darkgrey;
+  background-color: rgb(255, 255, 255);
   /* outline: 1px solid slategrey; */
   }
 
@@ -137,4 +139,16 @@ background-color: rgb(255, 255, 255);
 .button:hover {
   /* scale: (1.2, 1.2); */
   cursor: pointer;
+}
+
+.back {
+  height: 7%;
+  width: 7%;
+  color: #B0903D;
+  transform: translate(20%, 100%);
+}
+
+.back:hover {
+  cursor: pointer;
+  opacity: 0.7;
 }
