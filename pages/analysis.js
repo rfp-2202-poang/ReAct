@@ -1,14 +1,12 @@
 import styles from "../styles/Analysis.module.css";
 import AnalyzeChart from '../components/homePage/AnalyzeChart.js'
+import Header from '../components/homepage/Header.js';
 
 export default function Analysis({ script , analysis , analysisArr}) {
 
   return (
     <div className={styles.container}>
-      <div className={styles.header}>
-        <h1 className={styles.title}>SCRIPT.LY</h1>
-      </div>
-
+      <Header />
       <div className={styles.body}>
         <div className={styles.rowcontainer}>
 
