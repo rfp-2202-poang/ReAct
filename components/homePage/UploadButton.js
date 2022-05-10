@@ -1,50 +1,43 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../../styles/UploadButton.module.css'
-import React, { useState } from 'react';
-import { useForm } from 'react-hook-form';
+import Head from "next/head";
+import Image from "next/image";
+import styles from '../../styles/UploadButton.module.css';
+import React, { useState } from "react";
 import axios from 'axios';
 
-const UploadButton = () => {
+const UploadButton = ({ setScript }) => {
 
-  // const { register, handleSubmit } = useForm();
-  // const [analyze, setAnalyze] = useState('');
+  const hiddenFileInput = React.useRef(null);
 
-  // const onSubmit = (data) => {
+  const handleFileUpload = (file) => {
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      const text = e.target.result;
+      setScript(text);
+    };
 
-    // const reader = new FileReader();
-    // reader.onload = function(e) {
-    //   const text = e.target.result
+    reader.readAsText(file);
+  };
 
-    //   axios.post('/api/emotions', {
-    //     text: text
-    //   })
-    //   .then((emotions) => {
-    //     console.log('emotions.data:::', emotions.data);
-    //     setAnalyze(emotions.data)
-    //   })
-    //   .catch((err) => {
-    //     console.error(err)
-    //   })
-    // };
-
-  //   reader.readAsText(data.firstName[0]);
-  // }
+  const handleClick = (event) => {
+    hiddenFileInput.current.click();
+  }
 
   return (
-    // <form onSubmit={handleSubmit(onSubmit)} className={styles.input}>
-    //   <input {...register("firstName", { required: true })} type='file' />
-    //   {/* <button>Analyze Script</button> */}
-    // </form>
-    <div>
+    <>
+      <button className={styles.button} onClick={(event) => handleClick(event)}>
+        Upload
+      </button>
       <input
         type="file"
+        ref={hiddenFileInput}
         onChange={(event) => handleFileUpload(event.target.files[0])}
-        className={styles.input}
+        className={styles.button}
+        style={{display: 'none'}}
       />
-    {/* <button onClick={getEmotions(currentScript)}>Analyze Script</button> */}
-    </div>
-  )
-}
+      <p className={styles.format}>Supported formats: .txt</p>
+    </>
+
+  );
+};
 
 export default UploadButton;
