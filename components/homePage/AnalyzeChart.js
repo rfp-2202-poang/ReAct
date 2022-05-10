@@ -53,7 +53,7 @@ const AnalyzeChart = ({emotion}) => {
     >
       {/* <CartesianGrid /> */}
       <XAxis dataKey="name" />
-      <YAxis />
+      <YAxis type="number" domain={[0, 100]}/>
       <Tooltip />
       <Legend />
       <Bar dataKey="emotions" fill="#c5af75" />
