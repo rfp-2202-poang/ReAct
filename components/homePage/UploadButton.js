@@ -4,7 +4,7 @@ import styles from '../../styles/UploadButton.module.css';
 import React, { useState } from "react";
 import axios from 'axios';
 
-const UploadButton = ({ setScript }) => {
+const UploadButton = ({ setScript, setUploadComplete }) => {
 
   const hiddenFileInput = React.useRef(null);
 
@@ -12,7 +12,9 @@ const UploadButton = ({ setScript }) => {
     const reader = new FileReader();
     reader.onload = function (e) {
       const text = e.target.result;
+      console.log('uploaded text:::', text);
       setScript(text);
+      setUploadComplete(true);
     };
 
     reader.readAsText(file);
@@ -25,7 +27,7 @@ const UploadButton = ({ setScript }) => {
   return (
     <>
       <button className={styles.button} onClick={(event) => handleClick(event)}>
-        Upload
+        Choose File
       </button>
       <input
         type="file"

@@ -9,8 +9,9 @@ const text = 'My fellow citizens: I stand here today humbled by the task before 
 
 function MyApp({ Component, pageProps }) {
   const [script, setScript] = useState(text);
+  const [uploadComplete, setUploadComplete] = useState(false);
 
-  return <Component {...pageProps} script={script} setScript={setScript}/>
+  return <Component {...pageProps} script={script} setScript={setScript} setUploadComplete={setUploadComplete} uploadComplete={uploadComplete}/>
 
 
 }
