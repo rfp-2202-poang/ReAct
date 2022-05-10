@@ -49,6 +49,7 @@ const Practice = ({ script, setScript, setUploadComplete }) => {
   const reset = () =>{
     setPracticing(false);
     var synth = window.speechSynthesis;
+    synth.resume();
     synth.cancel();
     setLineToRead(0);
   }
@@ -95,7 +96,7 @@ const Practice = ({ script, setScript, setUploadComplete }) => {
             </form>
             <div className={styles.smallButtons}>
               <CgPlayButtonO className={styles.icons} onClick={playLine} />
-              <CgPlayPauseO className={styles.icons} onClick={pause} />
+              <CgPlayPauseO className={paused? styles.pausedButton :styles.icons} onClick={pause} />
               <CgPlayTrackPrevO className={styles.icons} onClick={reset}/>
             </div>
           </div>

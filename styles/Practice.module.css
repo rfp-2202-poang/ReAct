@@ -69,6 +69,10 @@
   overflow-y: scroll;
   resize: none;
 }
+.text:hover {
+  color: #B0903D;
+}
+
 
 .rowContainer {
   width: 100%;
@@ -158,4 +162,21 @@
   width: 7%;
   color: #B0903D;
   transform: translate(20%, 100%);
+}
+
+.pausedButton {
+  cursor: pointer;
+  background-color: #B0903D;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  opacity: 70%;
+  transition: 1s;
+  font: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 48px;
+  text-align: center;
+  margin: 10px;
 }
