@@ -10,9 +10,19 @@ const text = 'My fellow citizens: I stand here today humbled by the task before 
 function MyApp({ Component, pageProps }) {
   const [script, setScript] = useState(text);
   const [uploadComplete, setUploadComplete] = useState(false);
+  const [analysis, setAnalysis] = useState({});
+  const [analysisArr, setAnalysisArr] = useState([]);
 
-  return <Component {...pageProps} script={script} setScript={setScript} setUploadComplete={setUploadComplete} uploadComplete={uploadComplete}/>
-
+  return <Component {...pageProps}
+    script={script}
+    setScript={setScript}
+    setUploadComplete={setUploadComplete}
+    uploadComplete={uploadComplete}
+    analysis={analysis}
+    setAnalysis={setAnalysis}
+    analysisArr={analysisArr}
+    setAnalysisArr={setAnalysisArr}
+    />
 
 }
 
