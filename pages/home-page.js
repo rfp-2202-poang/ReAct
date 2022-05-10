@@ -1,4 +1,5 @@
 import styles from "../styles/Home.module.css";
+import Header from '../components/homepage/Header.js';
 import UploadButton from "../components/homePage/UploadButton.js";
 import RecordButton from "../components/homePage/RecordButton.js";
 import AnalyzeButton from "../components/homePage/AnalyzeButton.js";
@@ -36,9 +37,7 @@ export default function homePage({ script, setScript, uploadComplete, setUploadC
 
   return (
     <div className={styles.container}>
-      <div className={styles.header}>
-        <h1 className={styles.title}>SCRIPT.LY</h1>
-      </div>
+      <Header/>
       <div className={styles.body}>
         <span className={styles.span}>Upload your script to get started</span>
         <UploadButton setScript={setScript} setUploadComplete={setUploadComplete} />

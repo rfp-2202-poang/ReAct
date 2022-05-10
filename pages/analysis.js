@@ -1,5 +1,6 @@
 import styles from "../styles/Analysis.module.css";
 import AnalyzeChart from '../components/homePage/AnalyzeChart.js'
+import Header from '../components/homepage/Header.js';
 import { BsArrowLeft } from 'react-icons/bs';
 import Link from 'next/link';
 
@@ -7,10 +8,7 @@ export default function Analysis({ script , analysis , analysisArr}) {
 
   return (
     <div className={styles.container}>
-      <div className={styles.header}>
-        <h1 className={styles.title}>SCRIPT.LY</h1>
-      </div>
-
+      <Header />
       <div className={styles.body}>
       <Link href='/edit'>
           <BsArrowLeft className={styles.back}/>
