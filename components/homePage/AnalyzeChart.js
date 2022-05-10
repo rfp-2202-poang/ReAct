@@ -5,6 +5,7 @@ import React, {useState} from 'react';
 import {BarChart,Bar,XAxis,YAxis,CartesianGrid,Tooltip,Legend} from "recharts";
 
 
+
 const AnalyzeChart = ({emotion}) => {
 
   const data = [
@@ -38,15 +39,15 @@ const AnalyzeChart = ({emotion}) => {
   // console.log(data)
 
   return (
-    <div>
+    // <div>
       <BarChart
-      width={500}
-      height={300}
+      width={700}
+      height={400}
       data={data}
       margin={{
         top: 5,
         right: 30,
-        left: 30,
+        left: 0,
         bottom: 5
       }}
     >
@@ -58,7 +59,7 @@ const AnalyzeChart = ({emotion}) => {
       <Bar dataKey="emotions" fill="#c5af75" />
     </BarChart>
 
-    </div>
+    // </div>
   )
 }
 
