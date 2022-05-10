@@ -23,18 +23,20 @@ const UploadButton = ({ setScript }) => {
   }
 
   return (
-    <div >
-      <button className={styles.input} onClick={(event) => handleClick(event)}>
+    <>
+      <button className={styles.button} onClick={(event) => handleClick(event)}>
         Upload
       </button>
       <input
         type="file"
         ref={hiddenFileInput}
         onChange={(event) => handleFileUpload(event.target.files[0])}
-        className={styles.input}
+        className={styles.button}
         style={{display: 'none'}}
       />
-    </div>
+      <p className={styles.format}>Supported formats: .txt</p>
+    </>
+
   );
 };
 

@@ -17,13 +17,13 @@ return (
         <span className={styles.span}>Upload your script to get started</span>
         <UploadButton setScript={setScript}/>
         <RecordButton />
-        <AnalyzeButton script={script}/>
+        {/* <AnalyzeButton script={script}/> */}
       </div>
       {/* <UploadButton></UploadButton> */}
       {/* <Analyze></Analyze> */}
       {/* <ConvertToSpeech></ConvertToSpeech> */}
       {/* <ConvertToText></ConvertToText> */}
-      <RecordButton />
+      {/* <RecordButton /> */}
       {/* <AnalyzeButton text={text}/> */}
     </div>
   );
