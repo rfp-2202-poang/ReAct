@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import AnalyzeChart from './AnalyzeChart.js';
 import {emotion, results} from './emotiondata.js';
 import Link from 'next/link';
+import buttonStyles from '../../styles/Button.module.css';
 
 export default function AnalyzeButton({ script, setAnalysis , setAnalysisArr}) {
 
@@ -24,7 +25,7 @@ export default function AnalyzeButton({ script, setAnalysis , setAnalysisArr}) {
   return (
     <>
       <Link href='/analysis'>
-      <button onClick={getCharts}>Analyze</button>
+      <button className={buttonStyles.button} onClick={getCharts}>Analyze</button>
       </Link>
     </>
   );

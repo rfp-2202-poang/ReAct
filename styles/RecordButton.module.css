@@ -1,4 +1,4 @@
-.button {
+/* .button {
   border: none;
   border-radius: 20px;
   background-color: rgba(176, 144, 61, 0.2);
@@ -19,9 +19,9 @@
 }
 
 .button:hover {
-  /* scale: (1.2, 1.2); */
+  scale: (1.2, 1.2);
   cursor: pointer;
-}
+} */
 
 .format {
   position: absolute;
