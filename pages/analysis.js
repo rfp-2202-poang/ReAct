@@ -4,6 +4,7 @@ import AnalyzeChart from '../components/homePage/AnalyzeChart.js'
 import Header from '../components/homepage/Header.js';
 import { BsArrowLeft } from 'react-icons/bs';
 import Link from 'next/link';
+import generate from '../helpers/download.js';
 
 export default function Analysis({ script, analysis, analysisArr }) {
 
@@ -24,24 +25,16 @@ export default function Analysis({ script, analysis, analysisArr }) {
 
           <div className={styles.chartBox}>
 
-            {/* <div className={styles.charts}> */}
             <span className={styles.emotionTitle}>Full Document - Emotion Analysis</span>
             <AnalyzeChart emotion={analysis} />
-            {/* {analysisArr.map((item, i) => {
-              return (
-                <>
-                  <span className={styles.emotionTitle}> Keyword: {item.text} Emotion Analysis </span>
-                  <AnalyzeChart emotion={item.emotion} ></AnalyzeChart>
-                </>
-              )
-            })} */}
-            {/* </div> */}
+
           </div>
         </div>
         <div className={styles.nav}>
           <Link href='/practice'>
             <button className={buttonStyles.button}>Practice</button>
           </Link>
+          <button className={buttonStyles.button} onClick={() => {generate(script)}}>Download</button>
         </div>
       </div>
     </div>

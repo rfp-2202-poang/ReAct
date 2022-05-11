@@ -10,10 +10,17 @@ const UploadButton = ({ setScript, setUploadComplete }) => {
   const hiddenFileInput = React.useRef(null);
 
   const handleFileUpload = (file) => {
+    // console.log('file:::', file);
+
+    if (file.type !== 'text/plain') {
+      alert('Invalid file type');
+      return
+    }
+
     const reader = new FileReader();
     reader.onload = function (e) {
       const text = e.target.result;
-      console.log('uploaded text:::', text);
+      // console.log('uploaded text:::', text);
       setScript(text);
       setUploadComplete(true);
     };
@@ -32,7 +39,7 @@ const UploadButton = ({ setScript, setUploadComplete }) => {
       </button>
       <input
         type="file"
-        ref={hiddenFileInput}
+        ref={hiddenFileInput} accept=".txt"
         onChange={(event) => handleFileUpload(event.target.files[0])}
         className={buttonStyles.button}
         style={{display: 'none'}}

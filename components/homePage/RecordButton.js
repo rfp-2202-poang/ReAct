@@ -34,12 +34,13 @@ export default function RecordButton({ setScript, setUploadComplete }) {
         .map(line => line.transcript)
         .join('');
       setScript(script);
+      setUploadComplete(true);
 
       recognition.current.onerror = (event) => {
         console.log(event.error);
       }
     }
-    setUploadComplete(true);
+
     setRecord(!record);
   };
 
