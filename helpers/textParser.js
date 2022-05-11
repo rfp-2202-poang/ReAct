@@ -68,9 +68,9 @@
   if(hint.length > 0) {
     hints.push(hint);
   }
-
+/*
   console.log(hints);
-  console.log(start);
+  console.log(start); */
   console.log(lines);
   return {lines: lines, hints: hints, start: start};
 };
@@ -84,7 +84,7 @@ const characterParser = (textStr) => {
       characters[line] = true;
     }
   })
-  console.log(characters);
+  //console.log(characters);
   return Object.keys(characters);
 }
 

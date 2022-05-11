@@ -19,99 +19,99 @@ const Practice = ({ script, setScript, setUploadComplete }) => {
   const [lineToRead, setLineToRead] = useState(0);
   const [hints, setHints] = useState([]);
   const [start, setStart] = useState(-1);
-  const [practicing, setPracticing] = useState(false);
   const [paused, setPaused] = useState(false);
   const [characters, setCharacters] = useState(characterParser(script));
+  const [paraReading, setParaReading] = useState(-1);
+  const [hidingScript, setHidingScript] = useState(false);
+
+  const stopAudio = () => {
+    var synth = window.speechSynthesis;
+    synth.cancel();
+  }
 
   const handleNameChange = (e) => {
+    stopAudio();
     setName(e.target.value);
+    setScriptToRead(scriptParser(script, e.target.value).lines);
+    setHints(scriptParser(script, e.target.value).hints);
+    setStart(scriptParser(script, e.target.value).start);
+    setPaused(false);
+    setLineToRead(0);
   }
-  const onSubmit = (event) => {
-      event.preventDefault();
-      setPracticing(true);
-      const parsedScript = scriptParser(script, name)
-      setScriptToRead(parsedScript.lines);
-      setHints(parsedScript.hints);
-      setStart(parsedScript.start);
-  }
-
 
   const playLine = () => {
     const line = scriptToRead[lineToRead];
-    console.log(line);
-      let utterance = new SpeechSynthesisUtterance(line);
-      speechSynthesis.speak(utterance);
-      if(lineToRead < scriptToRead.length - 1){
-        setLineToRead(lineToRead + 1);
-      } else {
-        setLineToRead(0);
-      }
-
+    stopAudio();
+    let utterance = new SpeechSynthesisUtterance(line);
+    speechSynthesis.speak(utterance);
+    if(lineToRead < scriptToRead.length - 1){
+      setLineToRead(lineToRead + 1);
+    } else {
+      setLineToRead(0);
+    }
   }
   const reset = () =>{
-    if(practicing) {
-      setPracticing(false);
-      var synth = window.speechSynthesis;
-      synth.resume();
-      synth.cancel();
+    stopAudio();
+    setLineToRead(0);
+    setName('');
+    setPaused(false);
+  }
+
+  const goToLine = (lineNum) => {
+    stopAudio();
+    const line = scriptToRead[lineNum];
+    let utterance = new SpeechSynthesisUtterance(line);
+    speechSynthesis.speak(utterance);
+    if(lineNum < scriptToRead.length - 1){
+      setLineToRead(lineNum + 1);
+    } else {
       setLineToRead(0);
     }
   }
 
-  const pause = () => {
-    if(practicing) {
-      var synth = window.speechSynthesis;
-      setPaused(!paused);
-      if(paused) {
-        synth.resume();
-
-      } else {
-        synth.pause();
-      }
-    }
+  const hide = () => {
+    stopAudio();
+    setHidingScript(!hidingScript);
   }
 
     return (
       <div className={styles.container}>
-        <div className={styles.header}>
-          <h1 className={styles.title}>SCRIPT.LY</h1>
-        </div>
         <div className={styles.rowContainer}>
         <Link href='/edit'>
           <BsArrowLeft className={styles.back}/>
         </Link>
           <div className={styles.text} >
-          {/* !practicing && */ script.split('\n').map((para, index) => <p
+            <button className={styles.smallButton}onClick={hide}>{hidingScript ? 'Show Script' : 'Hide Script'}</button>
+          {!hidingScript && script.split('\n').map((para, index) => <p
               key={index}
-              className={styles.paragraph}
+              className={paraReading=== index ? styles.paraReading : styles.paragraph}
               onClick={()=> {
-                let utterance = new SpeechSynthesisUtterance(para);
-                speechSynthesis.speak(utterance);
+                var synth = window.speechSynthesis;
+                synth.cancel();
+                if(paraReading !== index) {
+                  let utterance = new SpeechSynthesisUtterance(para);
+                  speechSynthesis.speak(utterance);
+                  setParaReading(index);
+                  utterance.onend = () => {setParaReading(-1);}
+                } else {
+                  setParaReading(-1);
+                }
+                console.log(paraReading);
               }}>{para}</p>)}
           </div>
 
           <div className={styles.right}>
-            <form onSubmit={onSubmit} className={styles.form}>
-              {/* <input
-              type='text'
-              placeholder='your character'
-              onChange={handleNameChange}
-              className={styles.input}
-              /> */}
-              {/* characters.length > 0 && */ <select onChange={handleNameChange}>
-                <option value="" key="empty">choose your character</option>
+              <p>{characters.length === 0 ? 'Choose a script that has multiple characters to use the practice feature!' : (name==='' ? 'Choose your character to start!' : 'You\'re reading for:')}</p>
+              {characters.length > 0 && <select className={styles.input} value={name} onChange={handleNameChange}>
+                <option value="" key="empty">Choose your character</option>
                 {
                 characters.map(character =>
                 <option value={character} key={character}>{character}</option>
                 )}
               </select>}
-              <button className={styles.button} disabled={name.length===0}>Start Practice</button>
-            </form>
-            <div className={styles.smallButtons}>
-              <CgPlayButtonO className={practicing && name!=="" ? styles.icons : styles.disabledIcons} onClick={playLine}/>
-              <CgPlayPauseO className={practicing && name!=="" ? (paused ? styles.pausedButton :styles.icons) : styles.disabledIcons} onClick={pause} />
-              <CgPlayTrackPrevO className={practicing && name!=="" ? styles.icons : styles.disabledIcons} onClick={reset} />
-            </div>
+            <button className={styles.button} onClick={() => {goToLine(lineToRead - 2)}} disabled={name === '' || lineToRead === 0}>Previous Line</button>
+            <button className={styles.button} onClick={playLine} disabled={name === ''}>{lineToRead===0 ? 'Start Practice': 'Next Line'}</button>
+            <button className={styles.button} onClick={reset} disabled={name === ''}>Reset</button>
           </div>
         </div>
       </div>
