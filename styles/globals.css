@@ -164,7 +164,7 @@ canvas {
   position: absolute;
   /* border: 2px solid red; */
   top: 120%;
-  margin: 5em;
+  margin: 0;
   color:white;
   animation: 3s titleFadeIn ease-out, once;
   padding-bottom: 0.5em;
