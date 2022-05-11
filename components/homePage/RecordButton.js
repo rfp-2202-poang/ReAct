@@ -20,11 +20,13 @@ export default function RecordButton({ setScript, setUploadComplete }) {
       recognition.current.start();
       recognition.current.onstart = () => {
         console.log('starting recording');
+        setUploadComplete(false);
       };
     } else {
       recognition.current.stop();
       recognition.current.onend = () => {
         console.log('stopped');
+        setUploadComplete(true);
       };
     }
 
@@ -34,7 +36,6 @@ export default function RecordButton({ setScript, setUploadComplete }) {
         .map(line => line.transcript)
         .join('');
       setScript(script);
-      setUploadComplete(true);
 
       recognition.current.onerror = (event) => {
         console.log(event.error);

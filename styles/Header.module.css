@@ -20,6 +20,10 @@
   margin: 0px;
 }
 
+.title:hover {
+  cursor: pointer;
+}
+
 .menuIcon {
   font-size: 2.5rem;
   color: white;

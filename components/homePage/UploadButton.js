@@ -12,7 +12,8 @@ const UploadButton = ({ setScript, setUploadComplete }) => {
   const handleFileUpload = (file) => {
     // console.log('file:::', file);
 
-    if (file.type !== 'text/plain') {
+
+    if (file !== undefined && file.type !== 'text/plain') {
       alert('Invalid file type');
       return
     }
@@ -30,6 +31,7 @@ const UploadButton = ({ setScript, setUploadComplete }) => {
 
   const handleClick = (event) => {
     hiddenFileInput.current.click();
+    setUploadComplete(false);
   }
 
   return (
