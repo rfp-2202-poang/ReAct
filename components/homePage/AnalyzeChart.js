@@ -1,5 +1,3 @@
-// import React, { useRef, useState, useEffect} from 'react';
-import axios from 'axios';
 import React, {useState} from 'react';
 
 import {BarChart,Bar,XAxis,YAxis,CartesianGrid,Tooltip,Legend} from "recharts";
@@ -36,10 +34,7 @@ const AnalyzeChart = ({emotion}) => {
     },
   ];
 
-  // console.log(data)
-
   return (
-    // <div>
       <BarChart
       width={700}
       height={400}
@@ -51,15 +46,12 @@ const AnalyzeChart = ({emotion}) => {
         bottom: 5
       }}
     >
-      {/* <CartesianGrid /> */}
       <XAxis dataKey="name" />
       <YAxis type="number" domain={[0, 100]}/>
       <Tooltip />
       <Legend />
       <Bar dataKey="emotions" fill="#c5af75" />
     </BarChart>
-
-    // </div>
   )
 }
 

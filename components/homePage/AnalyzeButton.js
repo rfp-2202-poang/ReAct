@@ -8,7 +8,8 @@ import buttonStyles from '../../styles/Button.module.css';
 export default function AnalyzeButton({ script, setAnalysis , setAnalysisArr}) {
 
   const getCharts = () => {
-    axios
+    if (script.length > 0) {
+      axios
       .post("api/emotions", {
         text: script
       })
@@ -20,6 +21,7 @@ export default function AnalyzeButton({ script, setAnalysis , setAnalysisArr}) {
       .catch((err) => {
         console.log("error", err);
       });
+    }
   };
 
   return (

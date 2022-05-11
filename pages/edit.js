@@ -1,5 +1,5 @@
 import PreviewText from '../components/editPage/PreviewText.js';
-import Header from '../components/homepage/Header.js';
+import Header from '../components/homePage/Header.js';
 import Link from 'next/link';
 import styles from '../styles/Edit.module.css';
 import buttonStyles from '../styles/Button.module.css';

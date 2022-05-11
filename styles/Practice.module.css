@@ -29,9 +29,9 @@
 
 .text{
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
+  flex-direction: column;
+  /* flex-wrap: wrap; */
+  justify-content: flex-start;
   width: 45%;
   margin: 5%;
   padding: 1%;
@@ -48,6 +48,10 @@
   /* Overflow-x: hidden;*/
   overflow-y: scroll;
   resize: none;
+}
+
+.text:hover {
+  cursor: pointer;
 }
 
 
@@ -121,6 +125,7 @@
 }
 
 .smallButton {
+  align-self: center;
   border: none;
   border-radius: 20px;
   background-color: rgba(176, 144, 61, 0.2);
@@ -135,7 +140,7 @@
   text-align: center;
   color: #B0903D;
   display: block;
-  
+
 }
 
 .smallButton:hover {
