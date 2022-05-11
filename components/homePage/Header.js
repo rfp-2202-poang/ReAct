@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Drawer from "@mui/material/Drawer";
+import Divider from '@mui/material/Divider';
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
@@ -12,38 +13,48 @@ const Header = () => {
   const [menuVis, setMenuVis] = useState(false);
 
   const list = () => (
-    <List>
-      <Link href="/home-page">
-        <ListItem button>
-          <ListItemText primary="Upload" />
+    <>
+      <List className={styles.drawerTopBar}>
+        <ListItem className={styles.drawerTopBarItem}>
+          <ListItemText className={styles.drawerTopBarText} disableTypography primary="Menu" />
         </ListItem>
-      </Link>
-
-      <Link href="/edit">
-        <ListItem button>
-          <ListItemText primary="Edit" />
-        </ListItem>
-      </Link>
-
-      <Link href="/analysis">
-        <ListItem button>
-          <ListItemText primary="Analyze " />
-        </ListItem>
-      </Link>
-
-      <Link href="/practice">
-        <ListItem button>
-          <ListItemText primary="Practice" />
-        </ListItem>
-      </Link>
-    </List>
+      </List>
+      <Divider/>
+      <List className={styles.drawerItems}>
+        <Link href="/home-page">
+          <ListItem className={styles.drawerItem} button>
+            <ListItemText className={styles.drawerItemText} disableTypography primary="Upload" />
+          </ListItem>
+        </Link>
+        <Link href="/edit">
+          <ListItem className={styles.drawerItem} button>
+            <ListItemText className={styles.drawerItemText} disableTypography primary="Edit" />
+          </ListItem>
+        </Link>
+        <Link href="/analysis">
+          <ListItem className={styles.drawerItem} button>
+            <ListItemText className={styles.drawerItemText} disableTypography primary="Analyze " />
+          </ListItem>
+        </Link>
+        <Link href="/practice">
+          <ListItem className={styles.drawerItem} button>
+            <ListItemText className={styles.drawerItemText} disableTypography primary="Practice" />
+          </ListItem>
+        </Link>
+      </List>
+    </>
   );
 
   return (
     <div className={styles.header}>
       <FiMenu className={styles.menuIcon} onClick={() => setMenuVis(true)} />
-      <Drawer anchor="left" open={menuVis} onClose={() => setMenuVis(false)}>
-        {list()}
+      <Drawer
+        PaperProps={{
+          sx: {
+            backgroundColor: "#F7F7F7"
+          }
+        }} anchor="left" open={menuVis} onClose={() => setMenuVis(false)}>
+          {list()}
       </Drawer>
       <Link href="/home-page">
         <h1 className={styles.title}>SCRIPT.LY</h1>

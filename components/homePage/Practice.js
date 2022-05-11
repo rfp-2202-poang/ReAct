@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import textParser from '../../helpers/textParser.js';
+import Header from './Header.js';
 // import { useForm } from 'react-hook-form';
 import styles from '../../styles/Practice.module.css';
 import { CgPlayButtonO } from "react-icons/cg";
@@ -66,9 +67,7 @@ const Practice = ({ script, setScript, setUploadComplete }) => {
 
     return (
       <div className={styles.container}>
-        <div className={styles.header}>
-          <h1 className={styles.title}>SCRIPT.LY</h1>
-        </div>
+        <Header/>
         <div className={styles.rowContainer}>
         <Link href='/edit'>
           <BsArrowLeft className={styles.back}/>

@@ -24,3 +24,40 @@
   font-size: 2.5rem;
   color: white;
 }
+
+.drawerItems {
+  width: 15rem;
+  /* font-size: 5rem; */
+}
+
+.drawerItem {
+  height: 4rem;
+}
+
+.drawerItemText {
+  font-size: 1.5rem;
+  color: #B0903D;
+  font-weight: 450;
+  /* text-transform: uppercase; */
+}
+
+.drawerTopBar {
+  height: 5.34rem;
+  background-color: #B0903D;
+  opacity: 0.7;
+  display: flex;
+
+}
+
+.drawerTopBarItem {
+  margin-left: 0px;
+}
+
+.drawerTopBarText {
+  font-size: 1.5rem;
+  font-weight: 450;
+  color: white;
+}
+/* .drawerItem {
+  scale: 2
+} */
