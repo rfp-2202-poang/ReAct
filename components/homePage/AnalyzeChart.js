@@ -1,5 +1,3 @@
-// import React, { useRef, useState, useEffect} from 'react';
-import axios from 'axios';
 import React, {useState} from 'react';
 
 import {BarChart,Bar,XAxis,YAxis,CartesianGrid,Tooltip,Legend} from "recharts";

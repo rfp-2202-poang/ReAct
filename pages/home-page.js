@@ -1,5 +1,5 @@
 import styles from "../styles/Home.module.css";
-import Header from '../components/homepage/Header.js';
+import Header from '../components/homePage/Header.js';
 import UploadButton from "../components/homePage/UploadButton.js";
 import RecordButton from "../components/homePage/RecordButton.js";
 import AnalyzeButton from "../components/homePage/AnalyzeButton.js";

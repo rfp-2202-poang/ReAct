@@ -1,22 +1,27 @@
 import styles from "../styles/Analysis.module.css";
 import buttonStyles from '../styles/Button.module.css';
 import AnalyzeChart from '../components/homePage/AnalyzeChart.js'
-import Header from '../components/homepage/Header.js';
+import Header from '../components/homePage/Header.js';
 import { BsArrowLeft } from 'react-icons/bs';
 import Link from 'next/link';
-import generate from '../helpers/download.js';
+import { useEffect } from 'react';
 
 export default function Analysis({ script, analysis, analysisArr }) {
 
-  return (
-    <div className={styles.container}>
-      <Header />
+  useEffect(() => {
+    const generate = require('../helpers/download.js');
+  }, [])
+
+  let display;
+  if (script.length > 0) {
+    display =
+      (<>
       <div className={styles.body}>
         <Link href='/edit'>
           <BsArrowLeft className={styles.back} />
         </Link>
         <div className={styles.rowcontainer}>
-
+          {display}
           <textarea
             className={styles.script}
             value={script}
@@ -34,9 +39,24 @@ export default function Analysis({ script, analysis, analysisArr }) {
           <Link href='/practice'>
             <button className={buttonStyles.button}>Practice</button>
           </Link>
-          <button className={buttonStyles.button} onClick={() => {generate(script)}}>Download</button>
+          <button className={buttonStyles.button} onClick={() => { generate(script) }}>Download</button>
         </div>
-      </div>
+        </div>
+      </>)
+  } else {
+    display =
+    <div className={styles.warningContainer}>
+        <Link href='/edit'>
+          <BsArrowLeft className={styles.back} />
+        </Link>
+        <div className={styles.uploadWarning}>Please upload or record your script </div>
+    </div>
+  }
+
+  return (
+    <div className={styles.container}>
+      <Header />
+        {display}
     </div>
   )
 }

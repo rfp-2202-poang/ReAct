@@ -1,5 +1,6 @@
 const docx = require("docx");
 // import * as fs from "fs";
+// import docx from 'docx'
 import saveAs from 'save-as'
 
 export default function generate(text) {

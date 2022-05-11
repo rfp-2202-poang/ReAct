@@ -143,3 +143,20 @@
   align-items: center;
   margin-bottom: 5%;
 }
+
+.warningContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  /* align-items: center; */
+
+}
+
+.uploadWarning {
+  margin: 10%;
+  color: #b0903d;
+  font-size: 4rem;
+  margin-bottom: 10vh;
+  text-align: center;
+  align-self: flex-start;
+}
