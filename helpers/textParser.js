@@ -1,9 +1,9 @@
 /*   var fs = require('fs');
  const text = fs.readFileSync('helpers/script.txt', 'utf-8'); */
 
- const scriptParser = (textStr=text, character='') => {
+
+ const getCleanScript = (textStr) => {
   const script = textStr.split('\n');
-  character = character.toUpperCase();
   const keywords = [
     'CONTINUED',
     'MORE',
@@ -20,6 +20,13 @@
       }
     }
   }
+  return cleanScript;
+ };
+
+ const scriptParser = (textStr, character) => {
+
+  character = character.toUpperCase();
+  const cleanScript = getCleanScript(textStr);
   let lines = [];
   let currLine = '';
   let currName;
@@ -68,4 +75,17 @@
   return {lines: lines, hints: hints, start: start};
 };
 
-module.exports = scriptParser;
+
+const characterParser = (textStr) => {
+  const cleanScript = getCleanScript(textStr);
+  const characters = {};
+  cleanScript.forEach((line) => {
+    if(line.toUpperCase() === line){
+      characters[line] = true;
+    }
+  })
+  console.log(characters);
+  return Object.keys(characters);
+}
+
+module.exports = {scriptParser, characterParser};

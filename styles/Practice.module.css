@@ -23,6 +23,11 @@
   color: white;
 }
 
+.button:disabled {
+  color:lightgrey;
+  background-color: white;
+}
+
 .icons {
   border: none;
   border-radius: 20px;
@@ -47,6 +52,23 @@
   color: white;
 }
 
+.disabledIcons {
+  cursor: pointer;
+  background-color: white;
+  color: lightgrey;
+  border: none;
+  border-radius: 20px;
+  opacity: 70%;
+  transition: 1s;
+  font: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 48px;
+  text-align: center;
+  margin: 10px;
+}
+
 .text{
   display: flex;
   flex-direction: row;
@@ -69,7 +91,7 @@
   overflow-y: scroll;
   resize: none;
 }
-.text:hover {
+.paragraph:hover {
   color: #B0903D;
 }
 
@@ -179,4 +201,8 @@
   line-height: 48px;
   text-align: center;
   margin: 10px;
+}
+.back:hover {
+  cursor: pointer;
+  opacity: 0.7;
 }
