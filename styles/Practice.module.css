@@ -17,34 +17,14 @@
 }
 
 .button:hover {
-  /* scale: (1.2, 1.2); */
   cursor: pointer;
   background-color: #B0903D;
   color: white;
 }
 
-.icons {
-  border: none;
-  border-radius: 20px;
-  background-color: rgba(176, 144, 61, 0.2);
-  opacity: 70%;
-  transition: 1s;
-  /* width: 429px;
-  height: 109px; */
-  font: 'Inter';
-  font-style: normal;
-  font-weight: 700;
-  font-size: 40px;
-  line-height: 48px;
-  text-align: center;
-  color: #B0903D;
-  margin: 10px;
-}
-
-.icons:hover {
-  cursor: pointer;
-  background-color: #B0903D;
-  color: white;
+.button:disabled {
+  color:lightgrey;
+  background-color: white;
 }
 
 .text{
@@ -68,6 +48,11 @@
   /* Overflow-x: hidden;*/
   overflow-y: scroll;
   resize: none;
+}
+
+
+.paragraph:hover {
+  color: #B0903D;
 }
 
 .rowContainer {
@@ -106,34 +91,62 @@
   margin-right: 5%;
 }
 
+.right p {
+  color:#B0903D;
+  text-align: center;
+}
+
 .form {
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-.input[type=text] {
+.input {
   border: none;
   border-radius: 10px;
   background-color: rgba(176, 144, 61, 0.2);
   opacity: 70%;
   transition: 1s;
   width: 429px;
-  height: 50px;
+  height: 30px;
   font: 'Inter';
   font-style: normal;
   font-weight: 400;
-  font-size: 20px;
+  font-size: 15px;
   line-height: 48px;
   text-align: center;
   color: #B0903D;
   margin: 10px;
 }
 
-.smallButtons {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
+.smallButton {
+  border: none;
+  border-radius: 20px;
+  background-color: rgba(176, 144, 61, 0.2);
+  opacity: 70%;
+  transition: 1s;
+  width: 100px;
+  height: 30px;
+  font: 'Inter';
+  font-style: normal;
+  font-weight: 70;
+  font-size: 15px;
+  text-align: center;
+  color: #B0903D;
+  display: block;
+  
+}
+
+.smallButton:hover {
+  cursor: pointer;
+  background-color: #B0903D;
+  color: white;
+}
+
+.smallButton:disabled {
+  color:lightgrey;
+  background-color: white;
 }
 
 .back {
@@ -146,4 +159,8 @@
 .back:hover {
   cursor: pointer;
   opacity: 0.7;
+}
+
+.paraReading {
+  color: #B0903D;
 }
