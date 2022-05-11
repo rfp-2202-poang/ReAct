@@ -1,6 +1,7 @@
 const TextToSpeechV1 = require("ibm-watson/text-to-speech/v1");
 const { IamAuthenticator } = require("ibm-watson/auth");
 const fs = require("fs");
+const dotenv = require('dotenv').config();
 
 const textToSpeech = new TextToSpeechV1({
   authenticator: new IamAuthenticator({

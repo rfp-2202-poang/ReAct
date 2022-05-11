@@ -1,6 +1,6 @@
 const NaturalLanguageUnderstandingV1 = require("ibm-watson/natural-language-understanding/v1");
 const { IamAuthenticator } = require("ibm-watson/auth");
-require('dotenv-flow').config();
+const dotenv = require('dotenv').config();
 
 const naturalLanguageUnderstanding = new NaturalLanguageUnderstandingV1({
   version: "2022-04-07",
