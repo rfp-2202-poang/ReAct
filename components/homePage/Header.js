@@ -13,18 +13,29 @@ const Header = () => {
 
   const list = () => (
     <List>
-      <ListItem button>
-        <ListItemText primary="Upload" />
-      </ListItem>
-      <ListItem button>
-        <ListItemText primary="Edit" />
-      </ListItem>
-      <ListItem button>
-        <ListItemText primary="Analyze " />
-      </ListItem>
-      <ListItem button>
-        <ListItemText primary="Practice" />
-      </ListItem>
+      <Link href="/home-page">
+        <ListItem button>
+          <ListItemText primary="Upload" />
+        </ListItem>
+      </Link>
+
+      <Link href="/edit">
+        <ListItem button>
+          <ListItemText primary="Edit" />
+        </ListItem>
+      </Link>
+
+      <Link href="/analysis">
+        <ListItem button>
+          <ListItemText primary="Analyze " />
+        </ListItem>
+      </Link>
+
+      <Link href="/practice">
+        <ListItem button>
+          <ListItemText primary="Practice" />
+        </ListItem>
+      </Link>
     </List>
   );
 
