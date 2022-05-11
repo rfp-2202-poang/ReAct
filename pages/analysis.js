@@ -4,7 +4,6 @@ import AnalyzeChart from '../components/homePage/AnalyzeChart.js'
 import Header from '../components/homepage/Header.js';
 import { BsArrowLeft } from 'react-icons/bs';
 import Link from 'next/link';
-import DownloadButton from '../components/homePage/DownloadButton.js';
 import generate from '../helpers/download.js';
 
 export default function Analysis({ script, analysis, analysisArr }) {
