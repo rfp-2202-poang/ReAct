@@ -15,11 +15,9 @@ const Practice = ({ script, setScript, setUploadComplete }) => {
   const [name, setName] = useState('');
   const [currentLine, setCurrentLine] = useState(0);
   const [scriptToRead, setScriptToRead] = useState([]);
-  const [scriptToDisplay, setScriptToDisplay] = useState('');
   const [lineToRead, setLineToRead] = useState(0);
   const [hints, setHints] = useState([]);
   const [start, setStart] = useState(-1);
-  const [paused, setPaused] = useState(false);
   const [characters, setCharacters] = useState(characterParser(script));
   const [paraReading, setParaReading] = useState(-1);
   const [hidingScript, setHidingScript] = useState(false);
@@ -35,7 +33,6 @@ const Practice = ({ script, setScript, setUploadComplete }) => {
     setScriptToRead(scriptParser(script, e.target.value).lines);
     setHints(scriptParser(script, e.target.value).hints);
     setStart(scriptParser(script, e.target.value).start);
-    setPaused(false);
     setLineToRead(0);
   }
 
@@ -54,7 +51,9 @@ const Practice = ({ script, setScript, setUploadComplete }) => {
     stopAudio();
     setLineToRead(0);
     setName('');
-    setPaused(false);
+    setStart(-1);
+    setScriptToRead([]);
+    setHints([]);
   }
 
   const goToLine = (lineNum) => {
@@ -101,7 +100,7 @@ const Practice = ({ script, setScript, setUploadComplete }) => {
           </div>
 
           <div className={styles.right}>
-              <p>{characters.length === 0 ? 'Choose a script that has multiple characters to use the practice feature!' : (name==='' ? 'Choose your character to start!' : 'You\'re reading for:')}</p>
+              <p>{characters.length === 0 ? 'Choose a script that has multiple characters to use the practice feature!' : (name==='' ? 'Choose your character to start practicing!' : 'You\'re reading for:')}</p>
               {characters.length > 0 && <select className={styles.input} value={name} onChange={handleNameChange}>
                 <option value="" key="empty">Choose your character</option>
                 {
@@ -110,6 +109,7 @@ const Practice = ({ script, setScript, setUploadComplete }) => {
                 )}
               </select>}
             <button className={styles.button} onClick={() => {goToLine(lineToRead - 2)}} disabled={name === '' || lineToRead === 0}>Previous Line</button>
+            {start > 0 && lineToRead === 0 && <p>You have the first line! Say your first line first, and then click "Start Practice"!</p>}
             <button className={styles.button} onClick={playLine} disabled={name === ''}>{lineToRead===0 ? 'Start Practice': 'Next Line'}</button>
             <button className={styles.button} onClick={reset} disabled={name === ''}>Reset</button>
           </div>
