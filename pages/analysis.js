@@ -1,17 +1,18 @@
 import styles from "../styles/Analysis.module.css";
+import buttonStyles from '../styles/Button.module.css';
 import AnalyzeChart from '../components/homePage/AnalyzeChart.js'
 import Header from '../components/homepage/Header.js';
 import { BsArrowLeft } from 'react-icons/bs';
 import Link from 'next/link';
 
-export default function Analysis({ script , analysis , analysisArr}) {
+export default function Analysis({ script, analysis, analysisArr }) {
 
   return (
     <div className={styles.container}>
       <Header />
       <div className={styles.body}>
-      <Link href='/edit'>
-          <BsArrowLeft className={styles.back}/>
+        <Link href='/edit'>
+          <BsArrowLeft className={styles.back} />
         </Link>
         <div className={styles.rowcontainer}>
 
@@ -25,7 +26,7 @@ export default function Analysis({ script , analysis , analysisArr}) {
 
             {/* <div className={styles.charts}> */}
             <span className={styles.emotionTitle}>Full Document - Emotion Analysis</span>
-            <AnalyzeChart emotion={analysis}/>
+            <AnalyzeChart emotion={analysis} />
             {/* {analysisArr.map((item, i) => {
               return (
                 <>
@@ -37,13 +38,12 @@ export default function Analysis({ script , analysis , analysisArr}) {
             {/* </div> */}
           </div>
         </div>
-
-        <Link href='/practice'>
-          <button className={styles.button}>Practice</button>
-        </Link>
-
+        <div className={styles.nav}>
+          <Link href='/practice'>
+            <button className={buttonStyles.button}>Practice</button>
+          </Link>
+        </div>
       </div>
-
     </div>
   )
 }

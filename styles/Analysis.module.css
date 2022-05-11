@@ -135,3 +135,10 @@
   cursor: pointer;
   opacity: 0.7;
 }
+
+.nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}

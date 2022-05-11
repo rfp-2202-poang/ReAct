@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import styles from '../../styles/UploadButton.module.css';
+import buttonStyles from '../../styles/Button.module.css';
 import { BsFillCircleFill } from 'react-icons/bs';
 
 export default function RecordButton({ setScript, setUploadComplete }) {
@@ -45,10 +46,10 @@ export default function RecordButton({ setScript, setUploadComplete }) {
   return (
     <>
       {record
-      ? <button onClick={toggleRecord} className={styles.button}>
+      ? <button onClick={toggleRecord} className={buttonStyles.button}>
           <BsFillCircleFill className={styles.blinking}/>
         </button>
-      : <button onClick={toggleRecord} className={styles.button}>Record</button>}
+      : <button onClick={toggleRecord} className={buttonStyles.button}>Record</button>}
     </>
   )
 }

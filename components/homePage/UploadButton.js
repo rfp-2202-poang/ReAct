@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import styles from '../../styles/UploadButton.module.css';
+import buttonStyles from '../../styles/Button.module.css';
 import React, { useState } from "react";
 import axios from 'axios';
 
@@ -26,14 +27,14 @@ const UploadButton = ({ setScript, setUploadComplete }) => {
 
   return (
     <>
-      <button className={styles.button} onClick={(event) => handleClick(event)}>
+      <button className={buttonStyles.button} onClick={(event) => handleClick(event)}>
         Choose File
       </button>
       <input
         type="file"
         ref={hiddenFileInput}
         onChange={(event) => handleFileUpload(event.target.files[0])}
-        className={styles.button}
+        className={buttonStyles.button}
         style={{display: 'none'}}
       />
       <p className={styles.format}>Supported formats: .txt</p>
