@@ -4,13 +4,14 @@ import AnalyzeChart from '../components/homePage/AnalyzeChart.js'
 import Header from '../components/homePage/Header.js';
 import { BsArrowLeft } from 'react-icons/bs';
 import Link from 'next/link';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 
 export default function Analysis({ script, analysis, analysisArr }) {
+  const generate = useRef(null);
 
   useEffect(() => {
-    const generate = require('../helpers/download.js');
-  }, [])
+    generate.current = require('../helpers/download.js');
+  }, []);
 
   let display;
   if (script.length > 0) {
@@ -39,7 +40,7 @@ export default function Analysis({ script, analysis, analysisArr }) {
           <Link href='/practice'>
             <button className={buttonStyles.button}>Practice</button>
           </Link>
-          <button className={buttonStyles.button} onClick={() => { generate(script) }}>Download</button>
+          <button className={buttonStyles.button} onClick={() => { generate.current.default(script) }}>Download</button>
         </div>
         </div>
       </>)
