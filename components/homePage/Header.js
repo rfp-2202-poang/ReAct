@@ -59,6 +59,7 @@ const Header = () => {
       <Link href="/home-page">
         <h1 className={styles.title}>SCRIPT.LY</h1>
       </Link>
+      <div className={styles.fakeMenuIcon}>{ }</div>
     </div>
   );
 };
